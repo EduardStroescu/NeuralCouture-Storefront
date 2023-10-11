@@ -1,10 +1,10 @@
 import {useRef, useEffect} from 'react';
-import {PerspectiveCamera} from '@react-three/drei';
-import {useFrame, useThree} from '@react-three/fiber';
-import {easing} from 'maath';
 import {useLocation} from '@remix-run/react';
+import {useFrame, useThree} from '@react-three/fiber';
+import {PerspectiveCamera} from '@react-three/drei';
+import {easing} from 'maath';
 
-export default function Camera(props) {
+export function Camera(props) {
   const location = useLocation();
   const {size} = useThree();
   const group = useRef();
