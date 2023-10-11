@@ -46,8 +46,8 @@ export default function CanvasWrapper() {
   );
 
   const {nodes} = useGLTF('/models/model15.glb');
-  const bakedTexture1 = useTexture('./models/baked1.jpg');
-  const bakedTexture2 = useTexture('./models/baked2.jpg');
+  const bakedTexture1 = useTexture('/models/baked1.jpg');
+  const bakedTexture2 = useTexture('/models/baked2.jpg');
   bakedTexture1.flipY = false;
   bakedTexture2.flipY = false;
 
@@ -102,11 +102,11 @@ export default function CanvasWrapper() {
         <meshBasicMaterial map={bakedTexture2} />
       </mesh>
       <Environment
-        files={'./Environment/surreal_desert.hdr'}
+        files={'/environment/surreal_desert.hdr'}
         background={'only'}
       />
       <Environment
-        files={'./Environment/evening_road_01_puresky_1k.hdr'}
+        files={'/environment/evening_road_01_puresky_1k.hdr'}
         background={false}
         blur={1}
       >
