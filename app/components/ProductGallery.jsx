@@ -1,7 +1,8 @@
-import {Image} from '@shopify/hydrogen';
 import {useEffect, useRef, useState} from 'react';
+import {Image} from '@shopify/hydrogen';
+
 import {CarouselHandles} from './CarouselHandles';
-import Product from '~/routes/($locale).products.$productHandle';
+
 import {useContainerWidth} from '~/hooks/useContainerWidth';
 
 /**
@@ -25,6 +26,9 @@ export function ProductGallery({product, className, buttonLeft, buttonRight}) {
           x >= scrollWidth - offsetWidth ? 0 : x + offsetWidth / 2,
         );
   };
+  useEffect(() => {
+    setCurrentImage(selectedVariant);
+  }, [selectedVariant]);
 
   if (!product.media.nodes.length) {
     return null;

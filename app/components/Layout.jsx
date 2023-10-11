@@ -1,8 +1,10 @@
+import {Disclosure} from '@headlessui/react';
 import {Suspense, useEffect, useMemo} from 'react';
 import {useParams, Form, Await, useMatches} from '@remix-run/react';
+import {Canvas} from '@react-three/fiber';
 import {useWindowScroll} from 'react-use';
-import {Disclosure} from '@headlessui/react';
 import {CartForm} from '@shopify/hydrogen';
+
 import {
   Drawer,
   useDrawer,
@@ -21,13 +23,11 @@ import {
   Cart,
   CartLoading,
   Link,
+  CanvasContent,
 } from '~/components';
-import {Canvas} from '@react-three/fiber';
-
 import {useCartFetchers} from '~/hooks/useCartFetchers';
 import {useIsHydrated} from '~/hooks/useIsHydrated';
 import {useIsHomePath} from '~/lib/utils';
-import CanvasWrapper from './CanvasWrapper';
 
 export function Loading() {
   return (
@@ -50,7 +50,7 @@ export function Layout({children, layout}) {
             dpr={[1, 1.5]}
             gl={{alpha: true, antialias: false}}
           >
-            <CanvasWrapper />
+            <CanvasContent />
           </Canvas>
         </Suspense>
         {isHome && (
