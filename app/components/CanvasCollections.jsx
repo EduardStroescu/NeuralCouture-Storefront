@@ -13,9 +13,12 @@ export function Collections({width, locale}) {
   const navigate = useNavigate();
   function handleMeshClick(handle) {
     navigate(
-      locale ? `${locale}/collections/${handle}` : `/collections/${handle}`,
+      locale.locale
+        ? `${locale.locale}/collections/${handle}`
+        : `/collections/${handle}`,
     );
   }
+
   return (
     <>
       {collections &&
