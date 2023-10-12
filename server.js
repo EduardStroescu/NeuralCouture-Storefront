@@ -53,8 +53,8 @@ module.exports = async function (request) {
       publicStorefrontToken: env.PUBLIC_STOREFRONT_API_TOKEN,
       privateStorefrontToken: env.PRIVATE_STOREFRONT_API_TOKEN,
       storeDomain: env.PUBLIC_STORE_DOMAIN,
-      // storefrontId: process.env.PUBLIC_STOREFRONT_ID,
-      // requestGroupId: request.headers.get('request-id'),
+      storefrontId: process.env.PUBLIC_STOREFRONT_ID,
+      requestGroupId: request.headers.get('request-id'),
     });
 
     const cart = createCartHandler({
@@ -79,7 +79,7 @@ module.exports = async function (request) {
        * If the redirect doesn't exist, then `storefrontRedirect`
        * will pass through the 404 response.
        */
-      // return storefrontRedirect({ request, response, storefront });
+      return storefrontRedirect({request, response, storefront});
     }
 
     return response;
