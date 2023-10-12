@@ -1,7 +1,7 @@
 function root({shop, url}) {
   return {
     title: shop?.name,
-    titleTemplate: '%s | Hydrogen Demo Store',
+    titleTemplate: '%s | Fashion Store',
     description: truncate(shop?.description ?? ''),
     handle: '@shopify',
     url,
@@ -34,8 +34,9 @@ function root({shop, url}) {
 function home() {
   return {
     title: 'Home',
-    titleTemplate: '%s | Hydrogen Demo Store',
-    description: 'The best place to buy snowboarding products',
+    titleTemplate: '%s | Fashion Store',
+    description:
+      'Clothes designed using artificial intelligence and expertly crafted at a down to earth price',
     robots: {
       noIndex: false,
       noFollow: false,

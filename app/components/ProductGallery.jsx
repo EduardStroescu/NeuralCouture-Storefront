@@ -35,7 +35,7 @@ export function ProductGallery({product, className, buttonLeft, buttonRight}) {
   }
   return (
     <div
-      className={`w-full flex flex-col gap-4 md:gap-2 lg:gap-0 hiddenScroll md:pb-0 ml-0 overflow-hidden ${className}`}
+      className={`w-full flex flex-col gap-4 md:gap-2 lg:gap-0 hiddenScroll pb-6 ml-0 overflow-hidden ${className}`}
     >
       <div className="flex justify-center md:justify-start pb-6">
         <Image
@@ -57,7 +57,6 @@ export function ProductGallery({product, className, buttonLeft, buttonRight}) {
             translateX={translateX}
             buttonLeft={buttonLeft}
             buttonRight={buttonRight}
-            className={className}
           />
           {product.media.nodes.map((med, i) => {
             const image =
@@ -66,6 +65,7 @@ export function ProductGallery({product, className, buttonLeft, buttonRight}) {
                 : null;
 
             const style = [
+              i === 0 ? 'ml-6' : '',
               'w-[4rem] sm:w-[6rem] xl:w-[7rem] 2xl:w-[9rem] flex flex-row justify-start flex-nowrap rounded flex-none overflow-hidden',
             ].join(' ');
 

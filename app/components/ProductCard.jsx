@@ -67,7 +67,7 @@ export function ProductCard({
               {cardLabel}
             </Text>
           </div>
-          <div className="grid gap-1">
+          <div className="grid gap-5">
             <Text
               className="w-full overflow-hidden whitespace-nowrap text-ellipsis "
               as="h3"
