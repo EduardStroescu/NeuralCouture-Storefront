@@ -12,7 +12,6 @@ export function Skeleton({
 }) {
   const styles = clsx('rounded bg-contrast', className);
 
-  return (
-    <Component {...props} width={width} height={height} className={styles} />
-  );
+  return null;
+  // <Component {...props} width={width} height={height} className={styles} />
 }

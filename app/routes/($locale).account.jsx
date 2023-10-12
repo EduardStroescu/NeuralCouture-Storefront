@@ -19,12 +19,10 @@ import {
   Modal,
   ProductSwimlane,
 } from '~/components';
-import {FeaturedCollections} from '~/components/FeaturedCollections';
 import {usePrefixPathWithLocale} from '~/lib/utils';
 import {CACHE_NONE, routeHeaders} from '~/data/cache';
 import {ORDER_CARD_FRAGMENT} from '~/components/OrderCard';
 
-import {getFeaturedData} from './($locale).featured-products';
 import {doLogout} from './($locale).account.logout';
 
 export const headers = routeHeaders;
@@ -58,7 +56,6 @@ export async function loader({request, context, params}) {
       isAuthenticated,
       customer,
       heading,
-      featuredData: getFeaturedData(context.storefront),
     },
     {
       headers: {
@@ -102,7 +99,7 @@ export default function Authenticated() {
   return <Account {...data} />;
 }
 
-function Account({customer, heading, featuredData}) {
+function Account({customer, heading}) {
   const orders = flattenConnection(customer.orders);
   const addresses = flattenConnection(customer.addresses);
 

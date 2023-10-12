@@ -79,7 +79,7 @@ export function Camera(props) {
   });
 
   return (
-    <group ref={group} {...props}>
+    <group ref={group} {...props} dispose={null}>
       <group name="Scene">
         <PerspectiveCamera
           ref={cameraRef}

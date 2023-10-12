@@ -203,14 +203,6 @@ function Product(props) {
             <meshBasicMaterial color={'#017382'} />
           </mesh>
         )}
-        {/* <mesh position={[0, 0.4, -0.5]}>
-            <roundedPlaneGeometry args={[8, 2.5, 0.4]} />
-            <meshPhysicalMaterial
-              color={'#003239'}
-              roughness={0.6}
-              transmission={0.1}
-            />
-          </mesh> */}
       </group>
     </group>
   );

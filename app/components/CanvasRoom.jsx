@@ -8,7 +8,7 @@ export function CanvasRoom() {
   bakedTexture2.flipY = false;
 
   return (
-    <>
+    <group dispose={null}>
       <mesh
         scale={4}
         position={[8.5, -2, -5]}
@@ -28,6 +28,6 @@ export function CanvasRoom() {
       >
         <meshBasicMaterial map={bakedTexture2} />
       </mesh>
-    </>
+    </group>
   );
 }
