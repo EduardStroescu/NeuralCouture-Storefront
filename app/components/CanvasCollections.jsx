@@ -44,7 +44,6 @@ function Collection(props) {
   }, [hovered]);
   useCursor(hovered);
   const scrollData = useScroll();
-  console.log(props.width);
 
   return (
     <group ref={groupRef} rotateX={Math.PI / 2}>

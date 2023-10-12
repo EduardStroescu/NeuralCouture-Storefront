@@ -4,12 +4,9 @@ import {Suspense} from 'react';
 import {Pagination, getPaginationVariables} from '@shopify/hydrogen';
 import invariant from 'tiny-invariant';
 
-// import {getFeaturedData} from './($locale).featured-products';
-
 import {
   FeaturedCollections,
   Grid,
-  Heading,
   Input,
   PageHeader,
   ProductCard,
