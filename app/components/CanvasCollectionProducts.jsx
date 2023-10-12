@@ -36,8 +36,7 @@ export function CollectionProducts(props) {
     [],
   );
 
-  let tOffset = 0; // Offset to stagger the products
-  let t = 0; // Animation time
+  let tOffset = 0.5; // Offset to stagger the products
 
   useFrame(() => {
     if (groupRef.current) {
@@ -47,7 +46,7 @@ export function CollectionProducts(props) {
       // Update positions of products along the path
       groupRef.current.children.forEach((product, index) => {
         const tProduct =
-          (((-scroll.offset + tOffset + index / numProducts) % 1) + 1) % 1; // Wrap within [0, 1]
+          (((-scroll.offset + tOffset + index / numProducts) % 1) + 1) % 1; // Clamp within [0, 1]
         const productPointIndex =
           Math.floor(tProduct * points.length) % points.length;
         const productPoint = points[productPointIndex];
@@ -58,7 +57,7 @@ export function CollectionProducts(props) {
         );
 
         product.position.set(lerpedPosition.x, lerpedPosition.y, 0);
-        product.rotation.set(-Math.PI / 2, 0, 0); // Rotate the product as it moves along the path
+        product.rotation.set(-Math.PI / 2, 0, 0); // Rotate the product to face the camera
       });
     }
   });

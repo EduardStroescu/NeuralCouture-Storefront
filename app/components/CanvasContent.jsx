@@ -26,8 +26,8 @@ export function CanvasContent() {
 
   return (
     <>
+      {isHome && <Collections locale={params} width={size.width} />}
       <ScrollControls infinite pages={4} damping={0.5}>
-        {isHome && <Collections locale={params} width={size.width} />}
         <CollectionProducts locale={params} width={size.width} />
       </ScrollControls>
       <CanvasRoom />
