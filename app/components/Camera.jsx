@@ -87,7 +87,7 @@ export function Camera(props) {
           name="Camera"
           far={130}
           near={0.01}
-          fov={(size.width / size.height) * 500 <= 500 ? 95 : 75}
+          fov={(size.width / size.height) * 500 <= 500 ? 90 : 75}
           makeDefault
         />
       </group>

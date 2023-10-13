@@ -29,3 +29,4 @@ export {Postprocessing} from './Postprocessing';
 export {CanvasEnvironment} from './CanvasEnvironment';
 export {Collections} from './CanvasCollections';
 export {CollectionProducts} from './CanvasCollectionProducts';
+export {Scroll, useScrollContext} from './Scroll';

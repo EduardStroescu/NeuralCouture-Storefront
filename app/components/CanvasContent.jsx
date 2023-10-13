@@ -1,6 +1,6 @@
 import {useParams} from '@remix-run/react';
 import {extend, useThree} from '@react-three/fiber';
-import {ScrollControls, Stats} from '@react-three/drei';
+import {Stats} from '@react-three/drei';
 import {geometry} from 'maath';
 
 import {useIsHomePath} from '~/lib/utils';
@@ -27,9 +27,7 @@ export function CanvasContent() {
   return (
     <>
       {isHome && <Collections locale={params} width={size.width} />}
-      <ScrollControls infinite pages={4} damping={0.5}>
-        <CollectionProducts locale={params} width={size.width} />
-      </ScrollControls>
+      <CollectionProducts locale={params} width={size.width} />
       <CanvasRoom />
       <Camera position={[5, 0, 26]} />
       <CanvasEnvironment width={size.width} />

@@ -23,7 +23,6 @@ import {
 import {PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
 import {routeHeaders} from '~/data/cache';
 import {seoPayload} from '~/lib/seo.server';
-import {getImageLoadingPriority} from '~/lib/const';
 
 export const headers = routeHeaders;
 
@@ -156,7 +155,7 @@ export default function Collection() {
             hasNextPage,
           }) => {
             return (
-              <div className="flex justify-center items-center gap-4 lg:gap-10 w-full mb-6 absolute bottom-[5%] left-0">
+              <div className="fixed z-[-1] flex justify-center items-center gap-4 lg:gap-10 w-full mb-6 bottom-[5%] left-0">
                 <Button
                   to={previousPageUrl}
                   width={'auto'}
