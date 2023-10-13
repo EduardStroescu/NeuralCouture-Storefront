@@ -114,7 +114,7 @@ export function Section({
   };
 
   const styles = clsx(
-    'w-full gap-4 md:gap-8',
+    'w-full gap-4 md:gap-8 z-100',
     displays[display],
     missingClass(className, '\\mp[xy]?-') && paddings[padding],
     dividers[divider],

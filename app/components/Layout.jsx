@@ -24,6 +24,7 @@ import {
   CartLoading,
   Link,
   CanvasContent,
+  Scroll,
 } from '~/components';
 import {useCartFetchers} from '~/hooks/useCartFetchers';
 import {useIsHydrated} from '~/hooks/useIsHydrated';
@@ -43,29 +44,31 @@ export function Layout({children, layout}) {
   return (
     <>
       <div className="canvas w-full h-full absolute z-[-2]">
-        <Suspense fallback={<Loading />}>
-          <Canvas
-            linear
-            flat
-            dpr={[1, 1.5]}
-            gl={{alpha: true, antialias: false}}
-          >
-            <CanvasContent />
-          </Canvas>
-        </Suspense>
-        {isHome && (
-          <div
-            className={`absolute bottom-4 left-0 pl-6 lg:pl-16 opacity-50 hover:opacity-100 pointer-events-auto`}
-          >
-            <a
-              href="https://eduardstroescu-portofolio.vercel.app"
-              target="_blank"
-              rel="noReferrer"
+        <Scroll>
+          <Suspense fallback={<Loading />}>
+            <Canvas
+              linear
+              flat
+              dpr={[1, 1.5]}
+              gl={{alpha: true, antialias: false}}
             >
-              &copy; {new Date().getFullYear()} / Eduard Stroescu
-            </a>
-          </div>
-        )}
+              <CanvasContent />
+            </Canvas>
+          </Suspense>
+          {isHome && (
+            <div
+              className={`absolute bottom-4 left-0 pl-6 lg:pl-16 opacity-50 hover:opacity-100 pointer-events-auto`}
+            >
+              <a
+                href="https://eduardstroescu-portofolio.vercel.app"
+                target="_blank"
+                rel="noReferrer"
+              >
+                &copy; {new Date().getFullYear()} / Eduard Stroescu
+              </a>
+            </div>
+          )}
+        </Scroll>
       </div>
       {headerMenu && <Header title={layout.shop.name} menu={headerMenu} />}
       <div className="flex flex-col pointer-events-none">

@@ -8,9 +8,9 @@ import {
   Line,
   Text,
   useCursor,
-  useScroll,
   useTexture,
 } from '@react-three/drei';
+import {useScrollContext} from '~/components';
 
 export function CollectionProducts(props) {
   const collectionItemsData = useRouteLoaderData(
@@ -27,7 +27,7 @@ export function CollectionProducts(props) {
   );
 
   const groupRef = useRef();
-  const scroll = useScroll();
+  const scroll = useScrollContext();
   const numProducts = collectionsContent?.length;
 
   const points = useMemo(
@@ -46,14 +46,14 @@ export function CollectionProducts(props) {
       // Update positions of products along the path
       groupRef.current.children.forEach((product, index) => {
         const tProduct =
-          (((-scroll.offset + tOffset + index / numProducts) % 1) + 1) % 1; // Clamp within [0, 1]
+          (((-scroll.progress + tOffset + index / numProducts) % 1) + 1) % 1; // Clamp within [0, 1]
         const productPointIndex =
           Math.floor(tProduct * points.length) % points.length;
         const productPoint = points[productPointIndex];
         const lerpedPosition = new Vector3().lerpVectors(
           product.position,
           new Vector3(productPoint.x, productPoint.y, 0),
-          0.1, // Adjust the interpolation factor for smoother or faster animation
+          0.055, // Adjust the interpolation factor for smoother or faster animation
         );
 
         product.position.set(lerpedPosition.x, lerpedPosition.y, 0);
@@ -139,7 +139,6 @@ function Product(props) {
     groupRef.current.scale.setScalar(hovered ? 1 + 0.02 : 1);
   }, [hovered]);
   useCursor(hovered);
-  const scrollData = useScroll();
 
   return (
     <group ref={groupRef} position={[0, 0, 0]}>
@@ -191,7 +190,6 @@ function Product(props) {
             style={{pointerEvents: 'none'}}
             pointerEvents={'none'}
             wrapperClass="m-0 p-0 box-border overflow-hidden h-full w-full"
-            portal={{current: scrollData.fixed}}
             geometry={<roundedPlaneGeometry args={[8, 2.5, 0.4]} />}
           >
             <div className="rounded-xl blur-xl bg-[#02A3BBB8] border px-[160px] pt-[50px] pb-[48px] border-[#10D9E182] "></div>

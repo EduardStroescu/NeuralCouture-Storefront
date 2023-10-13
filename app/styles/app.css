@@ -52,14 +52,11 @@ html,
 body {
   height: 100%;
   width: 100%;
-  position: relative;
+  position: absolute;
   z-index: -1;
   background-color: black;
 }
 
-.canvas {
-  touch-action: none;
-}
 
 *::-webkit-scrollbar {
   display: none;
@@ -106,14 +103,6 @@ shop-pay-button {
 
   html {
     scroll-padding-top: 10rem;
-  }
-
-  model-viewer::part(default-progress-mask) {
-    display: none;
-  }
-
-  model-viewer::part(default-progress-bar) {
-    display: none;
   }
 
   input[type='search']::-webkit-search-decoration,
