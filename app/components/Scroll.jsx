@@ -22,7 +22,7 @@ export function Scroll({children}) {
       gestureDirection: 'vertical', // vertical, horizontal, both
       smooth: true,
       smoothTouch: true,
-      touchMultiplier: 1.5,
+      touchMultiplier: 1,
       infinite: true,
     });
 
