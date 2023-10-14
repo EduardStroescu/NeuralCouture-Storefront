@@ -21,7 +21,7 @@ export function FeaturedCollections({
                 <div className="card-image bg-primary/5 aspect-[4/3]">
                   {collection?.image && (
                     <Image
-                      className="object-fill"
+                      className="object-fill rounded"
                       aspectRatio={'4/3'}
                       alt={`Image of ${collection.title}`}
                       data={collection.image}

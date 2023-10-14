@@ -171,12 +171,12 @@ function NoResults({noResults, recommendations}) {
                   title="Trending Products"
                   products={featuredProducts}
                   buttonLeft={
-                    'w-[3rem] md:w-[3rem] -translate-x-4 lg:translate-x-0'
+                    'w-[2rem] md:w-[3rem] -translate-x-4 translate-x-[0.3rem] lg:translate-x-4'
                   }
                   buttonRight={
-                    'w-[3rem] md:w-[3rem] translate-x-4 lg:translate-x-0'
+                    'w-[2rem] md:w-[3rem] translate-x-4 -translate-x-[0.3rem] lg:-translate-x-4'
                   }
-                  className={'lg:-left-[5px] -translate-y-8'}
+                  className={'lg:-left-[0px] -translate-y-8'}
                 />
               </Section>
             );

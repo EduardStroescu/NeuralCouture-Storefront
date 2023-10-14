@@ -177,7 +177,9 @@ function MenuMobileNav({menu, onClose}) {
           </Link>
         </span>
       ))}
-      <Link to={'/policies'}>Policies</Link>
+      <Link to={'/policies'} onClick={onClose}>
+        Policies
+      </Link>
       <CountrySelectorSmall borderColor={'navDrawer'} />
     </nav>
   );
