@@ -3,6 +3,8 @@ import * as Yup from 'yup';
 import {useFormik} from 'formik';
 import {useLoaderData} from '@remix-run/react';
 import {getFormikKeys} from '../lib/utils';
+import {useState} from 'react';
+import {FailIcon, SuccessIcon} from '~/components';
 
 export async function loader({context}) {
   const formikKeys = await getFormikKeys(context);
@@ -10,6 +12,8 @@ export async function loader({context}) {
 }
 
 export default function Contact() {
+  const [messageSent, setMessageSent] = useState(null);
+  const [messageReceived, setMessageReceived] = useState(false);
   const data = useLoaderData();
   const formik = useFormik({
     initialValues: {
@@ -34,32 +38,31 @@ export default function Contact() {
           .send(data.SERVICE_ID, data.TEMPLATE_ID, values, data.PUBLIC_KEY)
           .then(() => {
             setSubmitting(false);
-            // setMessageSent(true);
-            // setMessageReceived(true);
-            // setFlipped(false);
+            setMessageSent(true);
+            setMessageReceived(true);
             resetForm();
             setTimeout(() => {
-              // setMessageSent(false);
+              setMessageSent(false);
             }, 5000);
           });
       } catch {
         setSubmitting(false);
-        // setMessageSent(true);
-        // setMessageReceived(false);
+        setMessageSent(true);
+        setMessageReceived(false);
         setTimeout(() => {
-          // setMessageSent(false);
+          setMessageSent(false);
         }, 5000);
       }
     },
   });
 
   return (
-    <div className="flex justify-center my-24 px-4 pointer-events-auto">
+    <div className="flex justify-center my-24 py-4 px-4 pointer-events-auto bg-black/60 backgrop-blur-sm overflow-hidden">
       <div className="max-w-md w-full">
         <h1 className="text-4xl">Contact Us</h1>
         <form onSubmit={formik.handleSubmit} className="mt-6 sm:mt-4">
-          <div className="grid gap-6 sm:grid-cols-2 ">
-            <div className="relative z-0">
+          <div className="grid gap-6 sm:grid-cols-2">
+            <div className="relative z-0 col-span-2 sm:col-auto">
               <input
                 type="text"
                 name="user_name"
@@ -67,10 +70,13 @@ export default function Contact() {
                 onChange={formik.handleChange}
                 value={formik.values.user_name}
                 // style={{pointerEvents: !flipped ? 'none' : 'auto'}}
-                className="peer block w-full appearance-none border-0 border-b border-gray-500 bg-transparent py-2.5 px-2 text-white focus:border-[#f597e8] focus:outline-none focus:ring-0 caret-[#f597e8] "
+                className="peer block w-full appearance-none border-0 border-b border-gray-300 bg-transparent py-2.5 px-2 text-white focus:border-primary focus:outline-none focus:ring-0 caret-primary "
                 placeholder=""
               />
-              <label className="absolute top-3 -z-10 origin-[0] -translate-y-7 scale-75 transform  text-white duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-7 peer-focus:italic peer-focus:scale-90 peer-focus:text-[#f597e8] peer-focus:dark:text-[#f597e8]">
+              <label
+                htmlFor="user_name"
+                className="absolute top-3 -z-10 origin-[0] -translate-y-7 scale-75 transform  text-white duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-7 peer-focus:italic peer-focus:scale-90 peer-focus:text-primary peer-focus:dark:text-primary"
+              >
                 Your name
               </label>
               {formik.touched.user_name && formik.errors.user_name && (
@@ -79,7 +85,7 @@ export default function Contact() {
                 </div>
               )}
             </div>
-            <div className="relative z-0">
+            <div className="relative z-0 col-span-2 sm:col-auto">
               <input
                 type="email"
                 name="user_email"
@@ -87,10 +93,13 @@ export default function Contact() {
                 onChange={formik.handleChange}
                 value={formik.values.user_email}
                 // style={{pointerEvents: !flipped ? 'none' : 'auto'}}
-                className="peer block w-full appearance-none border-0 border-b border-gray-500 bg-transparent py-2.5 px-2 text-white focus:border-[#f597e8] focus:outline-none focus:ring-0 caret-[#f597e8]"
+                className="peer block w-full appearance-none border-0 border-b border-gray-300 bg-transparent py-2.5 px-2 text-white focus:border-primary focus:outline-none focus:ring-0 caret-primary"
                 placeholder=""
               />
-              <label className="absolute top-3 -z-10 origin-[0] -translate-y-7 scale-75 transform text-white duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-7 peer-focus:scale-90 peer-focus:italic peer-focus:text-[#f597e8] peer-focus:dark:text-[#f597e8]">
+              <label
+                htmlFor="user_email"
+                className="absolute top-3 -z-10 origin-[0] -translate-y-7 scale-75 transform text-white duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-7 peer-focus:scale-90 peer-focus:italic peer-focus:text-primary peer-focus:dark:text-primary"
+              >
                 Your email
               </label>
               {formik.touched.user_email && formik.errors.user_email && (
@@ -99,26 +108,6 @@ export default function Contact() {
                 </div>
               )}
             </div>
-            {/* <div className="relative z-0">
-              <input
-                type="text"
-                name="user_name"
-                id="user_name"
-                onChange={formik.handleChange}
-                value={formik.values.user_name}
-                // style={{pointerEvents: !flipped ? 'none' : 'auto'}}
-                className="peer block w-full appearance-none border-0 border-b border-gray-500 bg-transparent py-2.5 px-2 text-white focus:border-[#f597e8] focus:outline-none focus:ring-0 caret-[#f597e8] "
-                placeholder=""
-              />
-              <label className="absolute top-3 -z-10 origin-[0] -translate-y-7 scale-75 transform text-white duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-7 peer-focus:italic peer-focus:scale-90 peer-focus:text-[#f597e8] peer-focus:dark:text-[#f597e8]">
-                Issue Cathegory
-              </label>
-              {formik.touched.user_name && formik.errors.user_name && (
-                <div className="bg-[#220140] rounded text-red-400 text-[0.8rem] text-center py-1 mt-2">
-                  {formik.errors.user_name}
-                </div>
-              )}
-            </div> */}
             <div className="relative z-0 col-span-2">
               <textarea
                 name="message"
@@ -126,11 +115,13 @@ export default function Contact() {
                 rows="5"
                 onChange={formik.handleChange}
                 value={formik.values.message}
-                // style={{pointerEvents: !flipped ? 'none' : 'auto'}}
-                className="peer block w-full h-[100px] sm:h-auto appearance-none border-0 border-b border-white bg-transparent py-2.5 px-2 text-white focus:border-[#f597e8] focus:outline-none focus:ring-0 resize-none overflow-y-auto caret-[#f597e8]"
+                className="peer block w-full h-[100px] sm:h-auto appearance-none border-0 border-b border-gray-300 bg-transparent py-2.5 px-2 text-primary focus:border-primary focus:outline-none focus:ring-0 resize-none overflow-y-auto caret-primary"
                 placeholder=" "
               ></textarea>
-              <label className="absolute top-3 -z-10 origin-[0] -translate-y-7 scale-75 transform text-white duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-7 peer-focus:scale-90 peer-focus:italic peer-focus:text-[#f597e8] peer-focus:dark:text-[#f597e8]">
+              <label
+                htmlFor="message"
+                className="absolute top-3 -z-10 origin-[0] -translate-y-7 scale-75 transform text-white duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-7 peer-focus:scale-90 peer-focus:italic peer-focus:text-primary peer-focus:dark:text-primary"
+              >
                 Your message
               </label>
               {formik.touched.message && formik.errors.message && (
@@ -145,12 +136,35 @@ export default function Contact() {
             value="Send"
             disabled={formik.isSubmitting}
             className="bg-contrast text-primary/80 rounded py-2 px-4 focus:shadow-outline block w-full mt-5 hover:scale-105 hover:text-primary/100"
-            // style={{pointerEvents: !flipped ? 'none' : 'auto'}}
           >
             {formik.isSubmitting ? 'Sending...' : 'Send Message'}
           </button>
         </form>
       </div>
+      <section
+        key={messageSent}
+        className={`${
+          messageSent == true
+            ? 'bounceInRight'
+            : messageSent == false
+            ? 'bounceOutRight'
+            : 'opacity-0'
+        } absolute top-16 right-4 overflow-hidden`}
+      >
+        <div
+          className="p-2 bg-[#047C77]/60 items-center text-primary leading-none rounded-full flex lg:inline-flex"
+          role="alert"
+        >
+          <span className="flex rounded-full bg-[#024B47] uppercase px-2 py-1 text-xs font-bold mr-3">
+            {messageReceived ? <SuccessIcon /> : <FailIcon />}
+          </span>
+          <span className="font-semibold mr-2 text-left flex-auto">
+            {messageReceived
+              ? 'Message Sent'
+              : 'Failed: Please try again later'}
+          </span>
+        </div>
+      </section>
     </div>
   );
 }

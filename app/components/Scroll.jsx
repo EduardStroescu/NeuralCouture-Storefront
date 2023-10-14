@@ -53,6 +53,7 @@ export function Scroll({children}) {
         style={{
           position: 'relative',
           minHeight: '400vh',
+          overflowX: 'hidden',
         }}
       >
         <div className="w-full h-full fixed top-0 left-0">

@@ -99,6 +99,7 @@ export function Section({
     y: 'py-6 md:py-8 lg:py-12',
     swimlane: 'pt-4 md:pt-8 lg:pt-12 md:pb-4 lg:pb-8',
     all: 'p-6 md:p-8 lg:p-4',
+    none: '',
   };
 
   const dividers = {
@@ -114,7 +115,7 @@ export function Section({
   };
 
   const styles = clsx(
-    'w-full gap-4 md:gap-8 z-100',
+    'w-full gap-4 md:gap-8',
     displays[display],
     missingClass(className, '\\mp[xy]?-') && paddings[padding],
     dividers[divider],

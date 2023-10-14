@@ -120,7 +120,7 @@ export default function Product() {
 
   return (
     <>
-      <Section className="px-4 md:px-8 lg:px-12 pointer-events-auto">
+      <Section className="px-4 md:px-8 lg:px-12 pointer-events-auto overflow-scroll">
         <div className="grid items-start md:gap-6 lg:gap-20 md:grid-cols-2 lg:grid-cols-3">
           <ProductGallery
             product={product}

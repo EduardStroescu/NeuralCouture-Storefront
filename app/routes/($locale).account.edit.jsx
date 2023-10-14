@@ -91,14 +91,14 @@ export const action = async ({request, context, params}) => {
 };
 
 /**
- * Since this component is nested in `accounts/`, it is rendered in a modal via `<Outlet>` in `account.tsx`.
+ * Since this component is nested in `accounts/`, it is rendered in a modal via `<Outlet>` in `account.jsx`.
  *
  * This allows us to:
  * - preserve URL state (`/accounts/edit` when the modal is open)
- * - co-locate the edit action with the edit form (rather than grouped in account.tsx)
+ * - co-locate the edit action with the edit form (rather than grouped in account.jsx)
  * - use the `useOutletContext` hook to access the customer data from the parent route (no additional data loading)
- * - return a simple `redirect()` from this action to close the modal :mindblown: (no useState/useEffect)
- * - use the presence of outlet data (in `account.tsx`) to open/close the modal (no useState)
+ * - return a simple `redirect()` from this action to close the modal (no useState/useEffect)
+ * - use the presence of outlet data (in `account.jsx`) to open/close the modal (no useState)
  */
 export default function AccountDetailsEdit() {
   const actionData = useActionData();

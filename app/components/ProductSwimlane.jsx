@@ -32,9 +32,9 @@ export function ProductSwimlane({
       heading={title}
       padding="y"
       {...props}
-      className="w-full pointer-events-auto"
+      className="w-full pointer-events-auto backdrop-blur-lg bg-black/40 rounded"
     >
-      <div className="relative flex flex-row items-center justify-center w-full hiddenScroll md:pb-8 md:scroll-px-8 lg:scroll-px-12 overflow-hidden">
+      <div className="relative flex flex-row items-center justify-center w-full hiddenScroll md:pb-8 md:scroll-px-8 lg:scroll-px-12">
         <CarouselHandles
           translateX={translateX}
           buttonLeft={buttonLeft}
@@ -44,7 +44,7 @@ export function ProductSwimlane({
         />
         <div
           ref={carouselRef}
-          className="w-[calc(100vw-7rem)] lg:w-[calc(100vw-11.5rem)] overflow-hidden"
+          className="w-[calc(100vw-8rem)] lg:w-[calc(100vw-11.5rem)] overflow-hidden"
         >
           <div
             style={{
