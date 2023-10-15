@@ -8,10 +8,10 @@ import {
 import clsx from 'clsx';
 import invariant from 'tiny-invariant';
 
+import {getCustomer} from './($locale).account';
+
 import {Button, Text} from '~/components';
 import {getInputStyleClasses, assertApiErrors} from '~/lib/utils';
-
-import {getCustomer} from './($locale).account';
 
 const badRequest = (data) => json(data, {status: 400});
 
