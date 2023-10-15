@@ -1,14 +1,15 @@
 import {
-  Await,
   Form,
   Outlet,
   useLoaderData,
   useMatches,
   useOutlet,
 } from '@remix-run/react';
-import {Suspense} from 'react';
 import {json, defer, redirect} from '@shopify/remix-oxygen';
 import {flattenConnection} from '@shopify/hydrogen';
+
+import {doLogout} from './($locale).account.logout';
+
 import {
   Button,
   OrderCard,
@@ -17,13 +18,10 @@ import {
   AccountDetails,
   AccountAddressBook,
   Modal,
-  ProductSwimlane,
 } from '~/components';
 import {usePrefixPathWithLocale} from '~/lib/utils';
 import {CACHE_NONE, routeHeaders} from '~/data/cache';
 import {ORDER_CARD_FRAGMENT} from '~/components/OrderCard';
-
-import {doLogout} from './($locale).account.logout';
 
 export const headers = routeHeaders;
 
@@ -109,7 +107,7 @@ function Account({customer, heading}) {
         <Form method="post" action={usePrefixPathWithLocale('/account/logout')}>
           <button
             type="submit"
-            className="text-primary/50 hover:text-primary/100 bg-contrast rounded py-2 px-3"
+            className="text-primary hover:text-primary/100 bg-contrast rounded py-2 px-3"
           >
             Sign out
           </button>

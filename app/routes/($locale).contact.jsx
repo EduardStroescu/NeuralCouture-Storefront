@@ -1,9 +1,11 @@
-import emailjs from '@emailjs/browser';
-import * as Yup from 'yup';
-import {useFormik} from 'formik';
-import {useLoaderData} from '@remix-run/react';
-import {getFormikKeys} from '../lib/utils';
 import {useState} from 'react';
+import {useLoaderData} from '@remix-run/react';
+import emailjs from '@emailjs/browser';
+import {useFormik} from 'formik';
+import * as Yup from 'yup';
+
+import {getFormikKeys} from '../lib/utils';
+
 import {FailIcon, SuccessIcon} from '~/components';
 
 export async function loader({context}) {
@@ -69,7 +71,6 @@ export default function Contact() {
                 id="user_name"
                 onChange={formik.handleChange}
                 value={formik.values.user_name}
-                // style={{pointerEvents: !flipped ? 'none' : 'auto'}}
                 className="peer block w-full appearance-none border-0 border-b border-gray-300 bg-transparent py-2.5 px-2 text-white focus:border-primary focus:outline-none focus:ring-0 caret-primary "
                 placeholder=""
               />
@@ -80,7 +81,7 @@ export default function Contact() {
                 Your name
               </label>
               {formik.touched.user_name && formik.errors.user_name && (
-                <div className="bg-[#220140] rounded text-red-400 text-[0.8rem] text-center py-1 mt-2">
+                <div className="bg-[#220140] rounded text-red-500 text-[0.8rem] text-center py-1 mt-2">
                   {formik.errors.user_name}
                 </div>
               )}
@@ -92,7 +93,6 @@ export default function Contact() {
                 id="user_email"
                 onChange={formik.handleChange}
                 value={formik.values.user_email}
-                // style={{pointerEvents: !flipped ? 'none' : 'auto'}}
                 className="peer block w-full appearance-none border-0 border-b border-gray-300 bg-transparent py-2.5 px-2 text-white focus:border-primary focus:outline-none focus:ring-0 caret-primary"
                 placeholder=""
               />
@@ -103,7 +103,7 @@ export default function Contact() {
                 Your email
               </label>
               {formik.touched.user_email && formik.errors.user_email && (
-                <div className="bg-[#220140] rounded text-red-400 text-[0.8rem] text-center py-1 mt-2">
+                <div className="bg-[#220140] rounded text-red-500 text-[0.8rem] text-center py-1 mt-2">
                   {formik.errors.user_email}
                 </div>
               )}
@@ -125,7 +125,7 @@ export default function Contact() {
                 Your message
               </label>
               {formik.touched.message && formik.errors.message && (
-                <div className="bg-[#220140] rounded w-1/2 text-red-400 text-[0.8rem] text-center py-1 mt-2">
+                <div className="bg-[#220140] rounded w-1/2 text-red-500 text-[0.8rem] text-center py-1 mt-2">
                   {formik.errors.message}
                 </div>
               )}

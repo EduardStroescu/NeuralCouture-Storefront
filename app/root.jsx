@@ -13,9 +13,6 @@ import {
 import {ShopifySalesChannel, Seo} from '@shopify/hydrogen';
 import invariant from 'tiny-invariant';
 
-import {Layout} from '~/components';
-import {seoPayload} from '~/lib/seo.server';
-
 import favicon from '../public/favicon.png';
 
 import {GenericError} from './components/GenericError';
@@ -23,6 +20,9 @@ import {NotFound} from './components/NotFound';
 import styles from './styles/app.css';
 import {DEFAULT_LOCALE, parseMenu} from './lib/utils';
 import {useAnalytics} from './hooks/useAnalytics';
+
+import {Layout} from '~/components';
+import {seoPayload} from '~/lib/seo.server';
 
 export const links = () => {
   return [
@@ -40,7 +40,7 @@ export const links = () => {
 };
 
 export async function loader({request, context}) {
-  const {session, storefront, cart, collections} = context;
+  const {session, storefront, cart} = context;
   const [customerAccessToken, layout] = await Promise.all([
     session.get('customerAccessToken'),
     getLayoutData(context),
