@@ -1,7 +1,7 @@
 function root({shop, url}) {
   return {
     title: shop?.name,
-    titleTemplate: '%s | Fashion Store',
+    titleTemplate: '%s | Neural Couture',
     description: truncate(shop?.description ?? ''),
     handle: '@shopify',
     url,
@@ -34,7 +34,7 @@ function root({shop, url}) {
 function home() {
   return {
     title: 'Home',
-    titleTemplate: '%s | Fashion Store',
+    titleTemplate: '%s | Neural Couture',
     description:
       'Clothes designed using artificial intelligence and expertly crafted at a down to earth price',
     robots: {
