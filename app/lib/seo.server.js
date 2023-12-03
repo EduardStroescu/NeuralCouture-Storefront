@@ -52,19 +52,19 @@ function home() {
       '@context': 'https://schema.org',
       '@type': 'WebPage',
       name: 'Home page',
-      og: {
-        title: pageTitle,
-        description: pageDescription,
-        url: pageUrl,
-        image: logoUrl,
-      },
-      twitter: {
-        card: 'summary_large_image',
-        title: pageTitle,
-        description: pageDescription,
-        url: pageUrl,
-        image: logoUrl,
-      },
+    },
+    og: {
+      title: pageTitle,
+      description: pageDescription,
+      url: pageUrl,
+      image: logoUrl,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: pageTitle,
+      description: pageDescription,
+      url: pageUrl,
+      image: logoUrl,
     },
   };
 }
