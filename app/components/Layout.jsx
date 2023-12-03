@@ -150,7 +150,7 @@ function CartDrawer({isOpen, onClose}) {
 export function MenuDrawer({isOpen, onClose, menu}) {
   return (
     <Drawer open={isOpen} onClose={onClose} openFrom="left" heading="Menu">
-      <div className="grid">
+      <div className="w-full text-center grid">
         <MenuMobileNav menu={menu} onClose={onClose} />
       </div>
     </Drawer>
@@ -159,7 +159,7 @@ export function MenuDrawer({isOpen, onClose, menu}) {
 
 function MenuMobileNav({menu, onClose}) {
   return (
-    <nav className="grid gap-4 p-6 sm:gap-6 sm:px-12 sm:py-8 text-contrast">
+    <nav className="w-full grid gap-4 py-8 px-6 sm:gap-6 sm:px-8 text-contrast font-bold">
       {/* Top level menu items */}
       {(menu?.items || []).map((item) => (
         <span key={item.id} className="block">
@@ -177,10 +177,7 @@ function MenuMobileNav({menu, onClose}) {
           </Link>
         </span>
       ))}
-      <Link to={'/policies'} onClick={onClose}>
-        Policies
-      </Link>
-      <CountrySelectorSmall borderColor={'navDrawer'} />
+      <CountrySelectorBig />
     </nav>
   );
 }
@@ -263,13 +260,13 @@ function DesktopHeader({isHome, menu, openCart, title}) {
           : ' text-primary'
       } ${
         !isHome && y > 50 && 'shadow-lightHeader'
-      } hidden h-16 lg:flex items-center sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
+      } hidden h-16 lg:flex items-center sticky transition duration-300 backdrop-blur-lg z-[9999] top-0 justify-between w-full leading-none gap-7 px-10 py-8`}
     >
-      <div className="flex gap-12">
+      <div className="flex gap-7">
         <Link className="font-bold" to="/" prefetch="intent">
           {title}
         </Link>
-        <nav className="flex gap-8">
+        <nav className="flex gap-7">
           {/* Top level menu items */}
           {(menu?.items || []).map((item) => (
             <Link
@@ -288,7 +285,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
           ))}
         </nav>
       </div>
-      <div className="flex items-center gap-8 pr-8">
+      <div className="flex items-center gap-7 pr-7">
         <Form
           method="get"
           action={params.locale ? `/${params.locale}/search` : '/search'}

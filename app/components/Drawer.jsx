@@ -56,7 +56,12 @@ export function Drawer({heading, open, onClose, openFrom = 'right', children}) {
                   >
                     {heading !== null && (
                       <Dialog.Title>
-                        <Heading as="span" size="lead" id="cart-contents">
+                        <Heading
+                          as="span"
+                          size="none"
+                          className="font-bold text-[1.5rem]"
+                          id="cart-contents"
+                        >
                           {heading}
                         </Heading>
                       </Dialog.Title>
