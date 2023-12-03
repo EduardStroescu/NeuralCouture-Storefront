@@ -60,10 +60,10 @@ export default function Policies() {
             &larr; Back to Policies
           </Button>
         </PageHeader>
-        <div className="flex-grow w-full md:w-7/12">
+        <div className="flex-grow w-full md:w-3/12">
           <div
             dangerouslySetInnerHTML={{__html: policy.body}}
-            className="prose dark:prose-invert"
+            className="prose dark:prose-invert backdrop-blur-lg bg-black/40 rounded p-10"
           />
         </div>
       </Section>

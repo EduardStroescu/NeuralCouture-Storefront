@@ -17,6 +17,13 @@ export function CountrySelectorBig() {
     selectedLocale.pathPrefix,
     '',
   )}${search}`;
+  function checkforDefaultLocale() {
+    if (root.data?.selectedLocale.pathPrefix === '') {
+      return true;
+    }
+    return false;
+  }
+  const isDefaultLocale = checkforDefaultLocale();
 
   const countries = fetcher.data ?? {};
   const defaultLocale = countries?.['default'];
@@ -50,16 +57,13 @@ export function CountrySelectorBig() {
       className="grid w-full gap-4 pointer-events-auto"
       onMouseLeave={closeDropdown}
     >
-      <Heading size="lead" className="cursor-default" as="h3">
-        Country
-      </Heading>
       <div className="relative">
         <details
-          className="absolute w-full border rounded border-contrast/30 dark:border-white open:round-b-none overflow-clip"
+          className="absolute w-full border rounded border-contrast/30 dark:border-contrast open:round-b-none overflow-clip"
           ref={closeRef}
         >
-          <summary className="flex items-center justify-between w-full px-4 py-3 cursor-pointer">
-            {selectedLocale.label}
+          <summary className="flex items-center justify-center w-full py-3 cursor-pointer">
+            {isDefaultLocale ? 'Country/Currency' : selectedLocale.label}
           </summary>
           <div className="w-full overflow-auto border-t border-contrast/30 dark:border-white bg-contrast/30 max-h-36">
             {countries &&
@@ -178,9 +182,9 @@ export function CountrySelectorSmall({
           ref={closeRef}
         >
           <summary
-            className={`flex items-center justify-between w-full md:px-4 md:py-2 cursor-pointer ${styles}`}
+            className={`flex items-center justify-between w-full md:px-4 md:py-2 cursor-pointer ${styles} truncate`}
           >
-            {isDefaultLocale ? 'Country' : selectedLocale.label}
+            {isDefaultLocale ? 'Country/Currency' : selectedLocale.label}
           </summary>
           <div
             className={`w-full overflow-auto border-t border-contrast/30 dark:border-white bg-contrast/30 max-h-36 ${styles}`}

@@ -1,5 +1,5 @@
 import {json} from '@shopify/remix-oxygen';
-import {Link, useLoaderData} from '@remix-run/react';
+import {useLoaderData} from '@remix-run/react';
 import {
   flattenConnection,
   AnalyticsPageType,
@@ -13,8 +13,6 @@ import {
   Section,
   Text,
   SortFilter,
-  Grid,
-  ProductCard,
   Button,
   ScrollIcon,
   IconArrowRight,

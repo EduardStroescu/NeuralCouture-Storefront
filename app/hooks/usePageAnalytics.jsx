@@ -26,5 +26,5 @@ export function usePageAnalytics({hasUserConsent}) {
       ...data,
       hasUserConsent,
     };
-  }, [matches]);
+  }, [matches, hasUserConsent]);
 }
