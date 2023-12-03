@@ -68,12 +68,24 @@ export default function App() {
   const hasUserConsent = true;
 
   useAnalytics(hasUserConsent);
+  // Links for Social Previews
+  const pageUrl = 'https://neural-couture.vercel.app/';
+  const logoUrl =
+    'https://raw.githubusercontent.com/EduardStroescu/PubImages/main/WebsiteImages/neuralCouture.jpg';
 
   return (
     <html lang={locale.language}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:image" content={logoUrl} />
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={pageUrl} />
+        <meta property="twitter:image" content={logoUrl} />
         <Seo />
         <Meta />
         <Links />
