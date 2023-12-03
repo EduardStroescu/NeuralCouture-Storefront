@@ -32,13 +32,6 @@ function root({shop, url}) {
 }
 
 function home() {
-  const pageTitle = 'Home | Neural Couture';
-  const pageDescription =
-    'All our products are made using AI photo generation and then brought to life at an affordable price by talented tailors.';
-  const pageUrl = 'https://neural-couture.vercel.app/';
-  const logoUrl =
-    'https://raw.githubusercontent.com/EduardStroescu/PubImages/main/WebsiteImages/neuralCouture.jpg';
-
   return {
     title: 'Home',
     titleTemplate: '%s | Neural Couture',
@@ -52,19 +45,6 @@ function home() {
       '@context': 'https://schema.org',
       '@type': 'WebPage',
       name: 'Home page',
-      og: {
-        title: pageTitle,
-        description: pageDescription,
-        url: pageUrl,
-        image: logoUrl,
-      },
-      twitter: {
-        card: 'summary_large_image',
-        title: pageTitle,
-        description: pageDescription,
-        url: pageUrl,
-        image: logoUrl,
-      },
     },
   };
 }
