@@ -1,7 +1,6 @@
 export function CartLoading() {
   return (
     <div className="flex w-full h-screen-no-nav justify-center items-center">
-      {/* @todo better spinner? */}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width={38}
