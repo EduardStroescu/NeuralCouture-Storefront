@@ -21,7 +21,7 @@ export function CartDetails({layout, cart}) {
   // @todo: get optimistic cart cost
   const cartHasItems = !!cart && cart.totalQuantity > 0;
   const container = {
-    drawer: 'grid grid-cols-1 h-screen-no-nav grid-rows-[1fr_auto]',
+    drawer: 'grid grid-cols-1 h-screen-no-nav pt-4 grid-rows-[1fr_auto]',
     page: 'w-full pb-12 grid md:grid-cols-2 md:items-start gap-8 md:gap-8 lg:gap-12',
   };
 
@@ -70,11 +70,12 @@ function CartDiscounts({discountCodes}) {
       </dl>
 
       {/* Show an input to apply a discount */}
+      {/* Still deciding on the implementation */}
       <UpdateDiscountForm discountCodes={codes}>
         <div
           className={clsx(
             'flex',
-            'items-center gap-4 justify-between text-copy',
+            'items-center gap-4 justify-between text-contrast',
           )}
         >
           <input
@@ -114,7 +115,7 @@ function CartLines({layout = 'drawer', lines: cartLines}) {
   const className = clsx([
     y > 0 ? 'border-t' : '',
     layout === 'page'
-      ? 'flex-grow md:translate-y-4'
+      ? 'flex-grow md:translate-y-4 bg-white/60 backdrop-blur-lg px-10 py-6 rounded'
       : 'px-6 pb-6 sm-max:pt-2 overflow-auto transition md:px-12',
   ]);
 
@@ -151,7 +152,7 @@ function CartCheckoutActions({checkoutUrl}) {
 function CartSummary({cost, layout, children = null}) {
   const summary = {
     drawer: 'grid gap-4 p-6 border-t md:px-12',
-    page: 'sticky top-nav grid gap-6 p-4 md:px-6 md:translate-y-4 bg-primary/5 rounded w-full',
+    page: 'sticky top-nav grid gap-6 p-4 md:px-6 md:translate-y-4 bg-primary/5 rounded w-full bg-white/60 backdrop-blur-lg',
   };
 
   return (
@@ -213,7 +214,7 @@ function CartLineItem({line}) {
 
           <div className="grid pb-2">
             {(merchandise?.selectedOptions || []).map((option) => (
-              <Text color="subtle" key={option.name}>
+              <Text color="cart" key={option.name}>
                 {option.name}: {option.value}
               </Text>
             ))}
@@ -270,7 +271,7 @@ function CartLineQuantityAdjust({line}) {
           <button
             name="decrease-quantity"
             aria-label="Decrease quantity"
-            className="w-10 h-10 transition text-black hover:text-primary disabled:text-primary/10"
+            className="w-10 h-10 transition text-black hover:text-contrast disabled:text-primary/10"
             value={prevQuantity}
             disabled={quantity <= 1}
           >
@@ -284,7 +285,7 @@ function CartLineQuantityAdjust({line}) {
 
         <UpdateCartButton lines={[{id: lineId, quantity: nextQuantity}]}>
           <button
-            className="w-10 h-10 transition text-black hover:text-primary"
+            className="w-10 h-10 transition text-black hover:text-contrast"
             name="increase-quantity"
             value={nextQuantity}
             aria-label="Increase quantity"
