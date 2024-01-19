@@ -60,7 +60,7 @@ export function Layout({children, layout}) {
               className={`absolute bottom-4 left-0 pl-6 lg:pl-16 opacity-50 hover:opacity-100 pointer-events-auto`}
             >
               <a
-                href="https://eduardstroescu-portofolio.vercel.app"
+                href="https://eduardstroescu.com"
                 target="_blank"
                 rel="noReferrer"
               >

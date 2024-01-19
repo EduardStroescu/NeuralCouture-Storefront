@@ -20,14 +20,11 @@ The store won't be officially up until the customer finishes all the legal proce
 
 - [Remix/React](https://github.com/remix-run/remix)
 - [Hydrogen](https://github.com/Shopify/hydrogen)
-- [Shopify CLI](https://github.com/Shopify/cli)
 - [Tailwind](https://tailwindcss.com/)
 - [threeJS](https://github.com/mrdoob/three.js)
 - [react-three/fiber](https://github.com/pmndrs/react-three-fiber)
 - [react-three/drei](https://github.com/pmndrs/drei)
 - [react-three/postprocessing](https://github.com/pmndrs/react-postprocessing)
-- [react-spring/web](https://github.com/pmndrs/react-spring)
-- [react-router-dom](https://github.com/remix-run/react-router)
 - [studio-freight/lenis](https://github.com/studio-freight/lenis)
 - [emailjs/browser](https://github.com/emailjs-com/emailjs-sdk)
 - [formik](https://github.com/jaredpalmer/formik)
@@ -57,7 +54,7 @@ PUBLIC_EMAILJS_PUBLIC_KEY=""
 ## Local development
 
 ```bash
-git clone https://github.com/EduardStroescu/R3F-ES-Portfolio.git
+git clone https://github.com/EduardStroescu/NeuralCouture-Storefront.git
 npm install
 npm run dev
 ```
