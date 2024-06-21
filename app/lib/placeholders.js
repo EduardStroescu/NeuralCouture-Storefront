@@ -1,114 +1,5 @@
 // Demo store placeholders
 const PLACEHOLDERS = {
-  HEROS: [
-    // primaryHero
-    {
-      heading: {value: 'All Mountain All Season'},
-      byline: {
-        value: 'The All New Hydrogen Snowboard Exclusively From Shopify',
-      },
-      cta: {value: 'Shop Now →'},
-      handle: 'freestyle',
-      spread: {
-        reference: {
-          mediaContentType: 'IMAGE',
-          alt: 'Tracks in the snow leading to a person on a mountain top with a red jacket contrasting to an epic blue horizon with a mountain range in the distance.',
-          previewImage: {
-            url: 'https://cdn.shopify.com/s/files/1/0551/4566/0472/files/Hydrogen_Hero_Feature_1.jpg?v=1654902468',
-          },
-          id: 'gid://shopify/MediaImage/29259478466616',
-          image: {
-            url: 'https://cdn.shopify.com/s/files/1/0551/4566/0472/files/Hydrogen_Hero_Feature_1.jpg?v=1654902468',
-            width: 2500,
-            height: 3155,
-          },
-        },
-      },
-      spreadSecondary: {
-        reference: {
-          __typename: 'MediaImage',
-          mediaContentType: 'IMAGE',
-          alt: 'A snowboarder standing on a mountain top in choppy snow, shows off the back of his snowboard which reads Hydrogen in a cursive script.',
-          previewImage: {
-            url: 'https://cdn.shopify.com/s/files/1/0551/4566/0472/files/Hydrogen_Hero_Feature_2.jpg?v=1654902468',
-          },
-          id: 'gid://shopify/MediaImage/29259478499384',
-          image: {
-            url: 'https://cdn.shopify.com/s/files/1/0551/4566/0472/files/Hydrogen_Hero_Feature_2.jpg?v=1654902468',
-            width: 2500,
-            height: 3155,
-          },
-        },
-      },
-      height: 'full',
-      top: true,
-      decoding: 'sync',
-      loading: 'eager',
-    },
-    // secondaryHero
-    {
-      heading: {value: 'From the Slopes to the Chalet'},
-      byline: null,
-      cta: {value: 'Shop Now →'},
-      handle: 'backcountry',
-      spread: {
-        reference: {
-          __typename: 'MediaImage',
-          mediaContentType: 'IMAGE',
-          alt: 'A skier hikes up a mountain through the snow with skis over their shoulder.',
-          previewImage: {
-            url: 'https://cdn.shopify.com/s/files/1/0551/4566/0472/files/Chalet_Collection_Feature_1.jpg?v=1654902306',
-          },
-          id: 'gid://shopify/MediaImage/29259478368312',
-          image: {
-            url: 'https://cdn.shopify.com/s/files/1/0551/4566/0472/files/Chalet_Collection_Feature_1.jpg?v=1654902306',
-            width: 2500,
-            height: 2500,
-          },
-        },
-      },
-      spreadSecondary: {
-        reference: {
-          __typename: 'MediaImage',
-          mediaContentType: 'IMAGE',
-          alt: 'A snow covered lodge is illuminated by lights at night with a dark starry sky and mountain backdrop.',
-          previewImage: {
-            url: 'https://cdn.shopify.com/s/files/1/0551/4566/0472/files/Chalet_Collection_Feature_2.jpg?v=1654902306',
-          },
-          id: 'gid://shopify/MediaImage/29259478401080',
-          image: {
-            url: 'https://cdn.shopify.com/s/files/1/0551/4566/0472/files/Chalet_Collection_Feature_2.jpg?v=1654902306',
-            width: 2500,
-            height: 2500,
-          },
-        },
-      },
-    },
-    // tertiaryHero
-    {
-      heading: {value: 'The Winter 2022 Collection'},
-      byline: {value: 'Just Dropped'},
-      cta: {value: 'Shop Now →'},
-      handle: 'winter-2022',
-      spread: {
-        reference: {
-          __typename: 'MediaImage',
-          mediaContentType: 'IMAGE',
-          alt: 'Three young women in snowboarding attire embracing and laughing while snow falls around them',
-          previewImage: {
-            url: 'https://cdn.shopify.com/s/files/1/0551/4566/0472/files/Collection_Feature_Wide.jpg?v=1654902160',
-          },
-          id: 'gid://shopify/MediaImage/29259478302776',
-          image: {
-            url: 'https://cdn.shopify.com/s/files/1/0551/4566/0472/files/Collection_Feature_Wide.jpg?v=1654902160',
-            width: 5000,
-            height: 2500,
-          },
-        },
-      },
-      spreadSecondary: null,
-    },
-  ],
   PRODUCT_INFO: [
     {
       title: 'Description',
@@ -128,25 +19,25 @@ const PLACEHOLDERS = {
   PRODUCT: {
     label: 'Limited Edition',
     id: 'gid://shopify/Product/6730850828344',
-    title: 'The Hydrogen',
-    publishedAt: '2021-06-17T18:33:17Z',
-    handle: 'snowboard',
+    title: 'Eden Glance',
+    publishedAt: '2023-06-17T18:33:17Z',
+    handle: 'eden-glance',
     description:
-      "Description Our flagship board, ideal for technical terrain and those who dare to go where the chairlift can't take you. The Hydrogen excels in the backcountry making riding out of bounds as easy as resort groomers. New for 2021, the Hydrogen Snowboard has Oxygen Pack inserts giving you more float on the deepest days. Care Guide Clean well after use Wax regularly Specs Weight: 5 lb Length: 4 ft Width: 1 ft Manufactured on: 8/2/2021, 3:30:00 PM Manufactured by: Shopify",
+      "Introducing a mesmerizing ensemble that captures the essence of untamed elegance – the Eden Glance. This enchanting dress is a celebration of nature's most captivating patterns, skillfully mimicking the intricate beauty of snake skin. The gown boasts a sleek, form-fitting silhouette that accentuates every curve, exuding a sense of serpentine grace. Crafted from luxurious, iridescent fabric, the dress shimmers with an ever-changing play of colors reminiscent of a snake's mesmerizing scales. The intricate detailing perfectly replicates the organic patterns found in nature, creating a visually stunning and tactile experience. The dress features a daring neckline that adds a touch of allure, while the fluidity of the fabric allows for graceful movement, echoing the sinuous motion of a slithering serpent. The Eden Glance is more than just a garment; it is a symbol of strength, mystery, and sensuality. Whether worn at a glamorous soirée or an upscale event, this dress is bound to captivate onlookers and make a bold, unforgettable statement. Embrace the wild beauty of the Eden Glance and step into a world where fashion meets the untamed allure of the natural world.",
     priceRange: {
       minVariantPrice: {
         amount: '775.0',
-        currencyCode: 'CAD',
+        currencyCode: 'RON',
       },
       maxVariantPrice: {
         amount: '775.0',
-        currencyCode: 'CAD',
+        currencyCode: 'RON',
       },
     },
     options: [
       {
         name: 'Color',
-        values: ['Morning', 'Evening', 'Night'],
+        values: ["Snake's Scales", 'Serpentine Grace', 'Untamed Elegance'],
       },
       {
         name: 'Size',
@@ -159,75 +50,23 @@ const PLACEHOLDERS = {
           id: 'gid://shopify/ProductVariant/41007289630776',
           image: {
             url: 'https://cdn.shopify.com/s/files/1/0551/4566/0472/products/hydrogen-morning.jpg?v=1636146509',
-            altText: 'The Hydrogen snowboard, color Morning',
+            altText: 'Eden Glance',
             width: 1200,
             height: 1504,
           },
           price: {
             amount: '775.0',
-            currencyCode: 'CAD',
+            currencyCode: 'RON',
           },
           compareAtPrice: {
             amount: '840.0',
-            currencyCode: 'CAD',
+            currencyCode: 'RON',
           },
         },
       ],
     },
   },
 };
-
-/**
- * getHeroPlaceholder() returns placeholder content when the expected metafields
- * don't exist. Define the following five custom metafields on your Shopify store to override placeholders:
- * - hero.title             Single line text
- * - hero.byline            Single line text
- * - hero.cta               Single line text
- * - hero.spread            File
- * - hero.spread_secondary   File
- *
- * @see https://help.shopify.com/manual/metafields/metafield-definitions/creating-custom-metafield-definitions
- * @see https://github.com/Shopify/hydrogen/discussions/1790
- */
-
-export function getHeroPlaceholder(heros) {
-  if (!heros?.length) return [];
-
-  // when we pass a collection without metafields,
-  // we merge it with placeholder data
-  return heros.map((hero, index) => {
-    // assume passed hero has metafields data already
-    if (hero?.heading?.value) {
-      return hero;
-    }
-
-    // hero placeholder
-    const placeholder = PLACEHOLDERS.HEROS[index];
-
-    // prioritize metafield data if available, else the hero hero values
-    // otherwise the placeholder values
-    const byLine =
-      hero?.byLine || hero?.descriptionHtml
-        ? {value: hero.descriptionHtml}
-        : placeholder.byline;
-
-    const heading =
-      hero?.heading || hero?.title ? {value: hero.title} : placeholder.heading;
-
-    // merge hero placeholder with hero data
-    return {
-      heading,
-      byLine,
-      cta: hero?.cta || placeholder.cta,
-      handle: hero?.handle || placeholder.handle,
-      id: hero?.id || index,
-      spread: hero?.spread || placeholder.spread,
-      spreadSecondary: hero?.spreadSecondary || placeholder.spreadSecondary,
-      height: placeholder?.height || undefined,
-      top: placeholder?.top || undefined,
-    };
-  });
-}
 
 // get product info placeholder data
 export function getProductInfoPlaceholder() {

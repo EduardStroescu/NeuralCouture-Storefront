@@ -13,7 +13,12 @@ const pickVariant = (product) => {
   else return product?.media.nodes[0];
 };
 
-export function ProductGallery({product, className, buttonLeft, buttonRight}) {
+export function ProductGallery({
+  product,
+  className,
+  buttonLeftStyle,
+  buttonRightStyle,
+}) {
   const selectedVariant = pickVariant(product);
   const [currentImage, setCurrentImage] = useState(selectedVariant);
   const carouselRef = useRef();
@@ -45,7 +50,7 @@ export function ProductGallery({product, className, buttonLeft, buttonRight}) {
           aspectRatio={'5/5'}
           width="100"
           sizes={'(min-width: 48em) 60vw, 90vw'}
-          className="object-cover h-full aspect-square fadeIn snap-center card-image bg-white dark:bg-contrast/10 w-full sm:w-[90%] lg:w-[30rem] xl:w-[30rem] 2xl:min-w-[55%]"
+          className="object-cover h-full aspect-square fadeIn snap-center card-image bg-contrast/10 w-full sm:w-[90%] lg:w-[30rem] xl:w-[30rem] 2xl:min-w-[55%]"
         />
       </div>
       <div className="w-full flex flex-row justify-center md:justify-start xl:pl-6 overflow-hidden">
@@ -55,8 +60,8 @@ export function ProductGallery({product, className, buttonLeft, buttonRight}) {
         >
           <CarouselHandles
             translateX={translateX}
-            buttonLeft={buttonLeft}
-            buttonRight={buttonRight}
+            buttonLeftStyle={buttonLeftStyle}
+            buttonRightStyle={buttonRightStyle}
           />
           {product.media.nodes.map((med, i) => {
             const image =

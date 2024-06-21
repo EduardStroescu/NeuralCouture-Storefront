@@ -4,7 +4,7 @@
 
 /* Tokens */
 :root {
-  --color-primary: 255 255 255; /* Text, buttons, etc. */
+  --color-primary: 250 250 250; /* Text, buttons, etc. */
   --color-contrast: 4 124 119; /* Backgrounds, borders, etc. */
   --color-accent: 235 86 40; /* Labels like "On sale" */
   --font-size-fine: 0.75rem; /* text-xs */

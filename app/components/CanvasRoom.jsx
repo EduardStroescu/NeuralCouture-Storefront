@@ -31,3 +31,5 @@ export function CanvasRoom() {
     </group>
   );
 }
+
+useGLTF.preload('/models/model15.glb');

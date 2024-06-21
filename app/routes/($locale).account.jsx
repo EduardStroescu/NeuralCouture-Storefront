@@ -103,7 +103,7 @@ function Account({customer, heading}) {
 
   return (
     <div className="pointer-events-auto">
-      <PageHeader heading={heading} variant="account">
+      <PageHeader heading={heading} variant="account" variant="allCollections">
         <Form method="post" action={usePrefixPathWithLocale('/account/logout')}>
           <button
             type="submit"

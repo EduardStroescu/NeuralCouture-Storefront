@@ -8,8 +8,8 @@ export const useContainerWidth = (containerRef) => {
 
   useEffect(() => {
     const getWidth = () => ({
-      offsetWidth: containerRef.current.offsetWidth,
-      scrollWidth: containerRef.current.scrollWidth,
+      offsetWidth: containerRef.current ? containerRef.current.offsetWidth : 0,
+      scrollWidth: containerRef.current ? containerRef.current.scrollWidth : 0,
     });
 
     const handleResize = () => {

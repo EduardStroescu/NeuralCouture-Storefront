@@ -76,7 +76,7 @@ export default function Contact() {
               />
               <label
                 htmlFor="user_name"
-                className="absolute top-3 -z-10 origin-[0] -translate-y-7 scale-75 transform  text-white duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-7 peer-focus:italic peer-focus:scale-90 peer-focus:text-primary peer-focus:dark:text-primary"
+                className="absolute top-3 -z-10 origin-[0] -translate-y-7 scale-75 transform  text-white duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-7 peer-focus:italic peer-focus:scale-90 peer-focus:text-primary"
               >
                 Your name
               </label>
@@ -98,7 +98,7 @@ export default function Contact() {
               />
               <label
                 htmlFor="user_email"
-                className="absolute top-3 -z-10 origin-[0] -translate-y-7 scale-75 transform text-white duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-7 peer-focus:scale-90 peer-focus:italic peer-focus:text-primary peer-focus:dark:text-primary"
+                className="absolute top-3 -z-10 origin-[0] -translate-y-7 scale-75 transform text-white duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-7 peer-focus:scale-90 peer-focus:italic peer-focus:text-primary"
               >
                 Your email
               </label>
@@ -120,7 +120,7 @@ export default function Contact() {
               ></textarea>
               <label
                 htmlFor="message"
-                className="absolute top-3 -z-10 origin-[0] -translate-y-7 scale-75 transform text-white duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-7 peer-focus:scale-90 peer-focus:italic peer-focus:text-primary peer-focus:dark:text-primary"
+                className="absolute top-3 -z-10 origin-[0] -translate-y-7 scale-75 transform text-white duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-7 peer-focus:scale-90 peer-focus:italic peer-focus:text-primary"
               >
                 Your message
               </label>

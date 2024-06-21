@@ -31,7 +31,7 @@ export default function Policies() {
 
   return (
     <>
-      <PageHeader heading="Policies" />
+      <PageHeader heading="Policies" variant="allCollections" />
       <Section padding="x" className="pt-20 mb-24 pointer-events-auto">
         {policies.map((policy) => {
           return (

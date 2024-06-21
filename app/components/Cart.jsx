@@ -3,7 +3,14 @@ import {useRef} from 'react';
 import {useScroll} from 'react-use';
 import {flattenConnection, CartForm, Image, Money} from '@shopify/hydrogen';
 
-import {Button, Heading, IconRemove, Text, Link} from '~/components';
+import {
+  Button,
+  Heading,
+  IconRemove,
+  Text,
+  Link,
+  FeaturedProducts,
+} from '~/components';
 import {getInputStyleClasses} from '~/lib/utils';
 
 export function Cart({layout, onClose, cart}) {
@@ -21,7 +28,8 @@ export function CartDetails({layout, cart}) {
   // @todo: get optimistic cart cost
   const cartHasItems = !!cart && cart.totalQuantity > 0;
   const container = {
-    drawer: 'grid grid-cols-1 h-screen-no-nav pt-4 grid-rows-[1fr_auto]',
+    drawer:
+      'bg-contrast/60 grid grid-cols-1 h-screen-no-nav pt-4 grid-rows-[1fr_auto]',
     page: 'w-full pb-12 grid md:grid-cols-2 md:items-start gap-8 md:gap-8 lg:gap-12',
   };
 
@@ -75,7 +83,7 @@ function CartDiscounts({discountCodes}) {
         <div
           className={clsx(
             'flex',
-            'items-center gap-4 justify-between text-contrast',
+            'items-center gap-4 justify-between text-copy',
           )}
         >
           <input
@@ -115,7 +123,7 @@ function CartLines({layout = 'drawer', lines: cartLines}) {
   const className = clsx([
     y > 0 ? 'border-t' : '',
     layout === 'page'
-      ? 'flex-grow md:translate-y-4 bg-white/60 backdrop-blur-lg px-10 py-6 rounded'
+      ? 'flex-grow md:translate-y-4 backdrop-blur-xl px-10 py-6 rounded'
       : 'px-6 pb-6 sm-max:pt-2 overflow-auto transition md:px-12',
   ]);
 
@@ -144,15 +152,14 @@ function CartCheckoutActions({checkoutUrl}) {
           Continue to Checkout
         </Button>
       </a>
-      {/* @todo: <CartShopPayButton cart={cart} /> */}
     </div>
   );
 }
 
 function CartSummary({cost, layout, children = null}) {
   const summary = {
-    drawer: 'grid gap-4 p-6 border-t md:px-12',
-    page: 'sticky top-nav grid gap-6 p-4 md:px-6 md:translate-y-4 bg-primary/5 rounded w-full bg-white/60 backdrop-blur-lg',
+    drawer: 'grid gap-4 p-6 border-t md:px-12 bg-contrast/60',
+    page: 'sticky top-nav grid gap-6 p-4 md:px-6 md:translate-y-4 bg-primary/5 rounded w-full backdrop-blur-lg',
   };
 
   return (
@@ -162,10 +169,8 @@ function CartSummary({cost, layout, children = null}) {
       </h2>
       <dl className="grid">
         <div className="flex items-center justify-between font-medium">
-          <Text as="dt" className="text-black">
-            Subtotal
-          </Text>
-          <Text as="dd" data-test="subtotal" className="text-black">
+          <Text as="dt">Subtotal</Text>
+          <Text as="dd" data-test="subtotal">
             {cost?.subtotalAmount?.amount ? (
               <Money data={cost?.subtotalAmount} />
             ) : (
@@ -202,7 +207,7 @@ function CartLineItem({line}) {
 
       <div className="flex justify-between flex-grow">
         <div className="grid gap-2">
-          <Heading as="h3" size="copy" className="text-black">
+          <Heading as="h3" size="copy">
             {merchandise?.product?.handle ? (
               <Link to={`/products/${merchandise.product.handle}`}>
                 {merchandise?.product?.title || ''}
@@ -214,7 +219,7 @@ function CartLineItem({line}) {
 
           <div className="grid pb-2">
             {(merchandise?.selectedOptions || []).map((option) => (
-              <Text color="cart" key={option.name}>
+              <Text color="subtle" key={option.name}>
                 {option.name}: {option.value}
               </Text>
             ))}
@@ -228,7 +233,7 @@ function CartLineItem({line}) {
           </div>
         </div>
         <Text>
-          <CartLinePrice line={line} as="span" className="text-black" />
+          <CartLinePrice line={line} as="span" />
         </Text>
       </div>
     </li>
@@ -245,7 +250,7 @@ function ItemRemoveButton({lineIds}) {
       }}
     >
       <button
-        className="flex items-center justify-center w-10 h-10 border border-black rounded"
+        className="flex items-center justify-center w-10 h-10 border rounded"
         type="submit"
       >
         <span className="sr-only">Remove</span>
@@ -266,12 +271,12 @@ function CartLineQuantityAdjust({line}) {
       <label htmlFor={`quantity-${lineId}`} className="sr-only">
         Quantity, {quantity}
       </label>
-      <div className="flex items-center border rounded border-black">
+      <div className="flex items-center border rounded">
         <UpdateCartButton lines={[{id: lineId, quantity: prevQuantity}]}>
           <button
             name="decrease-quantity"
             aria-label="Decrease quantity"
-            className="w-10 h-10 transition text-black hover:text-contrast disabled:text-primary/10"
+            className="w-10 h-10 transition text-white/80 hover:text-white  disabled:text-white/40"
             value={prevQuantity}
             disabled={quantity <= 1}
           >
@@ -279,13 +284,13 @@ function CartLineQuantityAdjust({line}) {
           </button>
         </UpdateCartButton>
 
-        <div className="px-2 text-center text-black" data-test="item-quantity">
+        <div className="px-2 text-center" data-test="item-quantity">
           {quantity}
         </div>
 
         <UpdateCartButton lines={[{id: lineId, quantity: nextQuantity}]}>
           <button
-            className="w-10 h-10 transition text-black hover:text-contrast"
+            className="w-10 h-10 transition text-white/80 hover:text-white"
             name="increase-quantity"
             value={nextQuantity}
             aria-label="Increase quantity"
@@ -333,7 +338,7 @@ export function CartEmpty({hidden = false, layout = 'drawer', onClose}) {
 
   const container = {
     drawer: clsx([
-      'content-start gap-4 px-6 pb-8 transition overflow-y-scroll md:gap-12 md:px-12 h-screen-no-nav md:pb-12',
+      'bg-contrast/60 content-start text-center gap-4 px-6 pb-8 pt-8 transition overflow-y-scroll md:gap-12 md:px-12 h-screen-no-nav md:pb-12 md:pt-12',
       y > 0 ? 'border-t' : '',
     ]),
     page: clsx([
@@ -344,17 +349,28 @@ export function CartEmpty({hidden = false, layout = 'drawer', onClose}) {
 
   return (
     <div ref={scrollRef} className={container[layout]} hidden={hidden}>
-      <div className="flex flex-col space-y-7 justify-center items-center md:py-8 md:px-12 px-4 py-6 h-screen">
-        <h2 className="whitespace-pre-wrap max-w-prose font-bold text-4xl text-black">
+      <section className="grid gap-6">
+        <h2 className="whitespace-pre-wrap max-w-prose font-bold text-4xl text-white">
           Your cart is empty
         </h2>
-        <Button
-          onClick={onClose}
-          className="inline-block rounded-sm font-medium text-center py-3 px-6 max-w-xl leading-none bg-black text-white w-full"
-        >
-          Continue shopping
-        </Button>
-      </div>
+        <div>
+          <Button
+            onClick={onClose}
+            className="inline-block rounded-sm font-medium text-center py-3 px-6 max-w-xl leading-none bg-black text-white w-full"
+          >
+            Continue shopping
+          </Button>
+        </div>
+      </section>
+      <section className="grid gap-8 pt-16">
+        <FeaturedProducts
+          count={4}
+          heading="Shop Best Sellers"
+          layout={layout}
+          onClose={onClose}
+          sortKey="BEST_SELLING"
+        />
+      </section>
     </div>
   );
 }

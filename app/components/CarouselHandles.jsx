@@ -3,8 +3,8 @@ import {IconArrowLeft, IconArrowRight} from '~/components';
 export function CarouselHandles({
   translateX,
   className,
-  buttonLeft = '',
-  buttonRight = '',
+  buttonLeftStyle = '',
+  buttonRightStyle = '',
   width,
 }) {
   return (
@@ -13,13 +13,13 @@ export function CarouselHandles({
     >
       <button
         onClick={() => translateX('left')}
-        className={`group pointer-events-auto ${buttonLeft}`}
+        className={`group pointer-events-auto ${buttonLeftStyle}`}
       >
         <IconArrowLeft width={width} />
       </button>
       <button
         onClick={() => translateX('right')}
-        className={`group pointer-events-auto ${buttonRight}`}
+        className={`group pointer-events-auto ${buttonRightStyle}`}
       >
         <IconArrowRight width={width} />
       </button>

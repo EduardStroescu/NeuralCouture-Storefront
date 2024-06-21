@@ -11,8 +11,8 @@ export function ProductSwimlane({
   products = mockProducts,
   count = 12,
   className = '',
-  buttonLeft,
-  buttonRight,
+  buttonLeftStyle,
+  buttonRightStyle,
   ...props
 }) {
   const relatedProductsRef = useRef();
@@ -37,8 +37,8 @@ export function ProductSwimlane({
       <div className="relative flex flex-row items-center justify-center w-full hiddenScroll md:pb-8 md:scroll-px-8 lg:scroll-px-12">
         <CarouselHandles
           translateX={translateX}
-          buttonLeft={buttonLeft}
-          buttonRight={buttonRight}
+          buttonLeftStyle={buttonLeftStyle}
+          buttonRightStyle={buttonRightStyle}
           className={className}
           width={'w-full'}
         />

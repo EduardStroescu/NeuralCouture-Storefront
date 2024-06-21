@@ -1,6 +1,7 @@
 import {useLocation, useMatches} from '@remix-run/react';
 import {parse as parseCookie} from 'worktop/cookie';
 import typographicBase from 'typographic-base';
+
 import {countries} from '~/data/countries';
 
 export function missingClass(string, prefix) {
@@ -178,22 +179,28 @@ export function parseMenu(menu, primaryDomain, env, customPrefixes = {}) {
  * Get each Formik environment key from the context
  */
 export async function getFormikKeys({env}) {
-  const data = {
+  if (
+    !env.PUBLIC_EMAILJS_SERVICE_ID ||
+    !env.PUBLIC_EMAILJS_TEMPLATE_ID ||
+    !env.PUBLIC_EMAILJS_PUBLIC_KEY
+  ) {
+    throw new Error('Missing emailjs service id or template id or public key');
+  }
+  return {
     SERVICE_ID: env.PUBLIC_EMAILJS_SERVICE_ID,
     TEMPLATE_ID: env.PUBLIC_EMAILJS_TEMPLATE_ID,
     PUBLIC_KEY: env.PUBLIC_EMAILJS_PUBLIC_KEY,
   };
-  return data;
 }
 
 export const INPUT_STYLE_CLASSES =
-  'appearance-none rounded dark:bg-transparent border focus:border-contrast/50 focus:ring-0 w-full py-2 px-3 text-secondary/90 placeholder:text-secondary/50 leading-tight focus:shadow-outline';
+  'appearance-none rounded bg-transparent border focus:border-white/90 focus:ring-0 w-full py-2 px-3 text-secondary/90 placeholder:text-white/70 leading-tight focus:shadow-outline';
 
 export const getInputStyleClasses = (isError) => {
   return `${INPUT_STYLE_CLASSES} ${
     isError
       ? 'border-red-500 pointer-events-auto'
-      : 'border-contrast/20 pointer-events-auto'
+      : 'border-white/60 pointer-events-auto'
   }`;
 };
 

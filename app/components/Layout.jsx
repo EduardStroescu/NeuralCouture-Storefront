@@ -24,52 +24,18 @@ import {
   CartLoading,
   Link,
   CanvasContent,
-  Scroll,
+  ScrollProvider,
+  Copywrite,
 } from '~/components';
 import {useCartFetchers} from '~/hooks/useCartFetchers';
 import {useIsHydrated} from '~/hooks/useIsHydrated';
 import {useIsHomePath} from '~/lib/utils';
 
-export function Loading() {
-  return (
-    <div className="w-full h-full flex  flex-col justify-center items-center">
-      <p className="text-[4rem]">Loading...</p>
-    </div>
-  );
-}
-
 export function Layout({children, layout}) {
-  const isHome = useIsHomePath();
   const {headerMenu, footerMenu} = layout;
   return (
     <>
-      <div className="canvas w-full h-full absolute z-[-2]">
-        <Scroll>
-          <Suspense fallback={<Loading />}>
-            <Canvas
-              linear
-              flat
-              dpr={[1, 1.5]}
-              gl={{alpha: true, antialias: false}}
-            >
-              <CanvasContent />
-            </Canvas>
-          </Suspense>
-          {isHome && (
-            <div
-              className={`absolute bottom-4 left-0 pl-6 lg:pl-16 opacity-50 hover:opacity-100 pointer-events-auto`}
-            >
-              <a
-                href="https://eduardstroescu.com"
-                target="_blank"
-                rel="noReferrer"
-              >
-                &copy; {new Date().getFullYear()} / Eduard Stroescu
-              </a>
-            </div>
-          )}
-        </Scroll>
-      </div>
+      <CanvasContainer />
       {headerMenu && <Header title={layout.shop.name} menu={headerMenu} />}
       <div className="flex flex-col pointer-events-none">
         <div>
@@ -83,6 +49,33 @@ export function Layout({children, layout}) {
       </div>
       {/* {footerMenu && <Footer menu={footerMenu} />} */}
     </>
+  );
+}
+
+function CanvasContainer() {
+  const isHome = useIsHomePath();
+
+  return (
+    <div className="canvas w-full h-full absolute z-[-2]">
+      <ScrollProvider>
+        <Suspense fallback={null}>
+          <Canvas
+            linear
+            flat
+            dpr={[1, 1]}
+            gl={{
+              alpha: true,
+              antialias: true,
+              stencil: false,
+              powerPreference: 'high-performance',
+            }}
+          >
+            <CanvasContent />
+          </Canvas>
+        </Suspense>
+        {isHome && <Copywrite />}
+      </ScrollProvider>
+    </div>
   );
 }
 
@@ -171,7 +164,7 @@ function MenuMobileNav({menu, onClose}) {
               isActive ? 'pb-1 border-b -mb-px' : 'pb-1'
             }
           >
-            <Text as="span" size="copy">
+            <Text as="span" size="copy" color="primary">
               {item.title}
             </Text>
           </Link>
@@ -191,9 +184,7 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
     <header
       role="banner"
       className={`${
-        isHome
-          ? ' text-contrast dark:text-primary shadow-darkHeader'
-          : ' text-primary'
+        isHome ? ' text-primary shadow-darkHeader' : ' text-primary'
       } flex lg:hidden items-center h-nav sticky backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8`}
     >
       <div className="flex items-center justify-start w-full gap-4">
@@ -216,9 +207,7 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
           </button>
           <Input
             className={
-              isHome
-                ? 'focus:border-contrast/20 dark:focus:border-primary/20'
-                : 'focus:border-primary/20'
+              isHome ? 'focus:border-primary/60' : 'focus:border-primary/20'
             }
             type="search"
             variant="minisearch"
@@ -255,9 +244,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
     <header
       role="banner"
       className={`${
-        isHome
-          ? 'text-contrast dark:text-primary shadow-darkHeader'
-          : ' text-primary'
+        isHome ? 'text-primary shadow-darkHeader' : ' text-primary'
       } ${
         !isHome && y > 50 && 'shadow-lightHeader'
       } hidden h-16 lg:flex items-center sticky transition duration-300 backdrop-blur-lg z-[9999] top-0 justify-between w-full leading-none gap-7 px-10 py-8`}
@@ -293,9 +280,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
         >
           <Input
             className={
-              isHome
-                ? 'focus:border-contrast/20 dark:focus:border-primary/20'
-                : 'focus:border-primary/20'
+              isHome ? 'focus:border-primary/60' : 'focus:border-primary/20'
             }
             type="search"
             variant="minisearch"
@@ -358,9 +343,7 @@ function Badge({openCart, dark, count}) {
         <IconBag />
         <div
           className={`${
-            dark
-              ? 'text-primary bg-contrast dark:text-contrast dark:bg-primary'
-              : 'text-contrast bg-primary'
+            dark ? 'text-contrast bg-primary' : 'text-contrast bg-primary'
           } absolute bottom-1 right-1 text-[0.625rem] font-medium subpixel-antialiased h-3 min-w-[0.75rem] flex items-center justify-center leading-none text-center rounded-full w-auto px-[0.125rem] pb-px`}
         >
           <span>{count || 0}</span>
@@ -400,7 +383,7 @@ function Footer({menu}) {
       as="footer"
       role="contentinfo"
       className={`grid min-h-[15rem] items-start grid-flow-row w-full gap-6 py-8 px-6 md:px-8 lg:px-12 md:gap-8 lg:gap-12 grid-cols-1 md:grid-cols-2 lg:grid-cols-${itemsCount}
-         dark:text-primary text-contrast overflow-hidden pointer-events-none`}
+         text-primary overflow-hidden pointer-events-none`}
     >
       <FooterMenu menu={menu} />
       <CountrySelectorBig />

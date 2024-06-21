@@ -26,7 +26,7 @@ export const headers = routeHeaders;
 
 export async function loader({params, request, context}) {
   const paginationVariables = getPaginationVariables(request, {
-    pageBy: 4,
+    pageBy: 6,
   });
   const {collectionHandle} = params;
 
@@ -126,7 +126,7 @@ export default function Collection() {
 
   return (
     <>
-      <PageHeader heading={collection.title}>
+      <PageHeader heading={collection.title} variant="allCollections">
         {collection?.description && (
           <div className="flex items-baseline justify-between w-full">
             <div>
@@ -137,68 +137,68 @@ export default function Collection() {
           </div>
         )}
       </PageHeader>
-      <Section>
+      <Section className="w-[90%] m-auto" variant="overlay">
         <SortFilter
           filters={collection.products.filters}
           appliedFilters={appliedFilters}
           collections={collections}
           currencyCode={currencyCode}
         />
-        <Pagination connection={collection.products}>
-          {({
-            isLoading,
-            hasPreviousPage,
-            nextPageUrl,
-            previousPageUrl,
-            hasNextPage,
-          }) => {
-            return (
-              <div className="fixed z-[-1] flex justify-center items-center gap-4 lg:gap-10 w-full mb-6 bottom-[5%] left-0">
-                <Button
-                  to={previousPageUrl}
-                  width={'auto'}
-                  variant="overlay"
-                  onClick={(e) =>
-                    !hasPreviousPage ? e.preventDefault() : null
-                  }
-                >
-                  {isLoading ? (
-                    'Loading...'
-                  ) : (
-                    <div className="w-full aspect-[2/1] flex flex-row justify-center items-center gap-2">
-                      <IconArrowLeft width={'w-[2rem]'} />
-                      <span className="group-hover:text-white/100 text-sm">
-                        Prev
-                      </span>
-                    </div>
-                  )}
-                </Button>
-                <div className="flex flex-col items-center justify-center">
-                  <ScrollIcon />
-                  <p className="text-center text-base">Scroll</p>
-                </div>
-                <Button
-                  to={nextPageUrl}
-                  width={'auto'}
-                  variant="overlay"
-                  onClick={(e) => (!hasNextPage ? e.preventDefault() : null)}
-                >
-                  {isLoading ? (
-                    'Loading...'
-                  ) : (
-                    <div className="w-full aspect-[2/1] flex flex-row justify-center items-center gap-2">
-                      <span className="group-hover:text-white/100 text-sm">
-                        Next
-                      </span>
-                      <IconArrowRight width={'w-[2rem]'} />
-                    </div>
-                  )}
-                </Button>
-              </div>
-            );
-          }}
-        </Pagination>
       </Section>
+      <Pagination connection={collection.products}>
+        {({
+          isLoading,
+          hasPreviousPage,
+          nextPageUrl,
+          previousPageUrl,
+          hasNextPage,
+        }) => {
+          return (
+            <div className="fixed z-[-1] bg-contrast/60 py-4 backdrop-blur-md flex justify-center items-center gap-4 lg:gap-10 w-full mb-6 bottom-[5%] left-0">
+              <Button
+                to={previousPageUrl}
+                width={'auto'}
+                variant="overlay"
+                className={`${
+                  hasPreviousPage
+                    ? 'opacity-100 pointer-events-auto'
+                    : 'opacity-0 pointer-events-none'
+                }`}
+                onClick={(e) => (!hasPreviousPage ? e.preventDefault() : null)}
+              >
+                <div className="w-full aspect-[2/1] flex flex-row justify-center items-center gap-2">
+                  <IconArrowLeft width={'w-[2rem]'} />
+                  <span className="group-hover:text-white/100 text-sm">
+                    Prev
+                  </span>
+                </div>
+              </Button>
+              <div className="flex flex-col items-center justify-center">
+                <ScrollIcon />
+                <p className="text-center text-base">Scroll</p>
+              </div>
+              <Button
+                to={nextPageUrl}
+                width={'auto'}
+                variant="overlay"
+                className={`${
+                  hasNextPage
+                    ? 'opacity-100 pointer-events-auto'
+                    : 'opacity-0 pointer-events-none'
+                }`}
+                onClick={(e) => (!hasNextPage ? e.preventDefault() : null)}
+              >
+                <div className="w-full aspect-[2/1] flex flex-row justify-center items-center gap-2">
+                  <span className="group-hover:text-white/100 text-sm">
+                    Next
+                  </span>
+                  <IconArrowRight width={'w-[2rem]'} />
+                </div>
+              </Button>
+            </div>
+          );
+        }}
+      </Pagination>
     </>
   );
 }

@@ -1,3 +1,5 @@
+import CollectionProducts from './CanvasCollectionProducts';
+
 export {Layout} from './Layout';
 export {Drawer, useDrawer} from './Drawer';
 export {Heading, Section, Text, PageHeader} from './Text';
@@ -25,8 +27,8 @@ export * from './Icon';
 export {CanvasContent} from './CanvasContent';
 export {Camera} from './Camera';
 export {CanvasRoom} from './CanvasRoom';
-export {Postprocessing} from './Postprocessing';
 export {CanvasEnvironment} from './CanvasEnvironment';
 export {Collections} from './CanvasCollections';
-export {CollectionProducts} from './CanvasCollectionProducts';
-export {Scroll, useScrollContext} from './Scroll';
+export * from './CanvasCollectionProducts';
+export {ScrollProvider, useScrollContext} from './ScrollProvider';
+export {Copywrite} from './Copywrite';

@@ -48,9 +48,9 @@ export function Drawer({heading, open, onClose, openFrom = 'right', children}) {
                 leaveFrom="translate-x-0"
                 leaveTo={offScreen[openFrom]}
               >
-                <Dialog.Panel className="w-screen max-w-lg text-left align-middle transition-all transform shadow-xl h-screen-dynamic bg-white">
+                <Dialog.Panel className="w-screen max-w-lg text-left align-middle transition-all transform shadow-xl h-screen-dynamic bg-contrast bg-opacity-60 bg-blur-lg">
                   <header
-                    className={`sticky top-0 flex items-center px-6 h-nav sm:px-8 md:px-12 text-black ${
+                    className={`sticky top-0 flex items-center px-6 h-nav sm:px-8 md:px-12 bg-contrast ${
                       heading ? 'justify-between' : 'justify-end'
                     }`}
                   >
@@ -72,7 +72,7 @@ export function Drawer({heading, open, onClose, openFrom = 'right', children}) {
                       onClick={onClose}
                       data-test="close-cart"
                     >
-                      <IconClose aria-label="Close panel" stroke={'black'} />
+                      <IconClose aria-label="Close panel" />
                     </button>
                   </header>
                   {children}

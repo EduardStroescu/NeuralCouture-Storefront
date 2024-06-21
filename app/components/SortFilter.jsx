@@ -143,7 +143,7 @@ export function FiltersDrawer({
   );
 }
 
-function AppliedFilters({filters = [], currencyCode}) {
+function AppliedFilters({filters = []}) {
   const [params] = useSearchParams();
   const location = useLocation();
   return (
@@ -155,7 +155,7 @@ function AppliedFilters({filters = [], currencyCode}) {
         {filters.map((filter) => {
           return (
             <Link
-              to={getAppliedFilterLink(filter, params, location, currencyCode)}
+              to={getAppliedFilterLink(filter, params, location)}
               className="flex px-2 border rounded-full gap"
               key={`${filter.label}-${filter.urlParam}`}
             >
@@ -171,7 +171,7 @@ function AppliedFilters({filters = [], currencyCode}) {
   );
 }
 
-function getAppliedFilterLink(filter, params, location, currencyCode) {
+function getAppliedFilterLink(filter, params, location) {
   const paramsClone = new URLSearchParams(params);
   if (filter.urlParam.key === 'variantOption') {
     const variantOptions = paramsClone.getAll('variantOption');

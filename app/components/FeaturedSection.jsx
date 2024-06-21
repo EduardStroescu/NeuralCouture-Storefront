@@ -29,8 +29,8 @@ export function FeaturedSection() {
       )}
       <ProductSwimlane
         padding={'x'}
-        buttonLeft={'w-[2.5rem] md:w-[3rem] -translate-x-4'}
-        buttonRight={'w-[2.5rem] md:w-[3rem] translate-x-4'}
+        buttonLeftStyle={'w-[2.5rem] md:w-[3rem] -translate-x-4'}
+        buttonRightStyle={'w-[2.5rem] md:w-[3rem] translate-x-4'}
         products={featuredProducts}
       />
     </>

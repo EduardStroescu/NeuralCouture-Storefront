@@ -1,6 +1,11 @@
 module.exports = {
-  extends: ['@remix-run/eslint-config', 'plugin:hydrogen/recommended'],
+  extends: [
+    '@remix-run/eslint-config',
+    'plugin:hydrogen/recommended',
+    'plugin:@react-three',
+  ],
   rules: {
+    '@react-three/no-clone-in-frame-loop': 'error',
     'hydrogen/prefer-image-component': 'off',
     'no-useless-escape': 'off',
     'no-case-declarations': 'off',

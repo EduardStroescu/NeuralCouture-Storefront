@@ -17,6 +17,7 @@ export function CountrySelectorBig() {
     selectedLocale.pathPrefix,
     '',
   )}${search}`;
+
   function checkforDefaultLocale() {
     if (root.data?.selectedLocale.pathPrefix === '') {
       return true;
@@ -59,13 +60,13 @@ export function CountrySelectorBig() {
     >
       <div className="relative">
         <details
-          className="absolute w-full border rounded border-contrast/30 dark:border-contrast open:round-b-none overflow-clip"
+          className="absolute w-full border rounded border-white open:round-b-none overflow-clip"
           ref={closeRef}
         >
-          <summary className="flex items-center justify-center w-full py-3 cursor-pointer">
+          <summary className="text-white bg-contrast flex items-center justify-center w-full py-3 cursor-pointer">
             {isDefaultLocale ? 'Country/Currency' : selectedLocale.label}
           </summary>
-          <div className="w-full overflow-auto border-t border-contrast/30 dark:border-white bg-contrast/30 max-h-36">
+          <div className="w-full overflow-auto border-t border-white bg-contrast max-h-36">
             {countries &&
               Object.keys(countries).map((countryPath) => {
                 const countryLocale = countries[countryPath];
@@ -149,8 +150,8 @@ export function CountrySelectorSmall({
   }, []);
 
   const borderColors = {
-    default: 'border-primary dark:border-primary',
-    navDrawer: 'border-contrast dark:border-contrast',
+    default: 'border-primary',
+    navDrawer: 'border-contrast',
   };
 
   const sizes = {
@@ -187,7 +188,7 @@ export function CountrySelectorSmall({
             {isDefaultLocale ? 'Country/Currency' : selectedLocale.label}
           </summary>
           <div
-            className={`w-full overflow-auto border-t border-contrast/30 dark:border-white bg-contrast/30 max-h-36 ${styles}`}
+            className={`w-full overflow-auto border-t border-white bg-contrast/30 max-h-36 ${styles}`}
           >
             {countries &&
               Object.keys(countries).map((countryPath) => {
@@ -230,8 +231,8 @@ function Country({closeDropdown, countryLocale, countryUrlPath, isSelected}) {
     >
       <Button
         className={clsx([
-          'text-contrast dark:text-primary',
-          'bg-primary dark:bg-contrast w-full p-2 transition rounded flex justify-start',
+          'text-primary',
+          'bg-contrast w-full p-2 transition flex justify-start',
           'items-center text-left cursor-pointer py-2 px-4',
         ])}
         type="submit"

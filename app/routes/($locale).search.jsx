@@ -170,10 +170,10 @@ function NoResults({noResults, recommendations}) {
                 <ProductSwimlane
                   title="Trending Products"
                   products={featuredProducts}
-                  buttonLeft={
+                  buttonLeftStyle={
                     'w-[2rem] md:w-[3rem] -translate-x-4 translate-x-[0.3rem] lg:translate-x-4'
                   }
-                  buttonRight={
+                  buttonRightStyle={
                     'w-[2rem] md:w-[3rem] translate-x-4 -translate-x-[0.3rem] lg:-translate-x-4'
                   }
                   className={'lg:-left-[0px] -translate-y-8'}

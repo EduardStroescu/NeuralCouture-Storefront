@@ -124,10 +124,10 @@ export default function Product() {
         <div className="grid items-start md:gap-6 lg:gap-20 md:grid-cols-2 lg:grid-cols-3">
           <ProductGallery
             product={product}
-            buttonLeft={
+            buttonLeftStyle={
               'w-[1.5rem] sm:w-[2rem] md:w-[2.5rem] bg-black/60 backdrop-blur rounded'
             }
-            buttonRight={
+            buttonRightStyle={
               'w-[1.5rem] sm:w-[2rem] md:w-[2.5rem] bg-black/60 backdrop-blur rounded'
             }
             className="w-full lg:col-span-2"
@@ -187,8 +187,8 @@ export default function Product() {
               <ProductSwimlane
                 title="Related Products"
                 products={products}
-                buttonLeft={'w-[2.5rem] md:w-[3rem]'}
-                buttonRight={'w-[2.5rem] md:w-[3rem]'}
+                buttonLeftStyle={'w-[2.5rem] md:w-[3rem]'}
+                buttonRightStyle={'w-[2.5rem] md:w-[3rem]'}
                 className={'lg:-left-[5px] px-1 lg:px-6 -translate-y-8'}
               />
             </div>
@@ -398,7 +398,7 @@ function ProductDetail({title, content, learnMore}) {
 
           <Disclosure.Panel className={'pb-4 pt-2 grid gap-2'}>
             <div
-              className="prose dark:prose-invert"
+              className="prose-invert"
               dangerouslySetInnerHTML={{__html: content}}
             />
             {learnMore && (

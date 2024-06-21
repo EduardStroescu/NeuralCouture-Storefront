@@ -209,7 +209,7 @@ function listCollections({collections, url}) {
   return {
     title: 'Collections',
     titleTemplate: '%s | Collections',
-    description: 'All hydrogen collections',
+    description: 'All NeuralCouture collections',
     url,
     jsonLd: collectionsJsonLd({collections, url}),
   };

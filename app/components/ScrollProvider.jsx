@@ -3,13 +3,19 @@ import {addEffect} from '@react-three/fiber';
 import Lenis from '@studio-freight/lenis';
 
 const scrollContext = createContext();
-export const useScrollContext = () => useContext(scrollContext);
+export const useScrollContext = () => {
+  const context = useContext(scrollContext);
+  if (context === undefined) {
+    throw new Error('useScrollContext must be used within a ScrollProvider');
+  }
+  return context;
+};
 
 const scroll = {
   progress: 0,
 };
 
-export function Scroll({children}) {
+export function ScrollProvider({children}) {
   const content = useRef(null);
   const wrapper = useRef(null);
 

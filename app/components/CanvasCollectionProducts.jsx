@@ -1,4 +1,4 @@
-import {useEffect, useState, useRef, useMemo} from 'react';
+import {useEffect, useState, useRef, useMemo, memo} from 'react';
 import {useNavigate, useRouteLoaderData} from '@remix-run/react';
 import {useFrame} from '@react-three/fiber';
 import {EllipseCurve, Vector3} from 'three';
@@ -10,21 +10,27 @@ import {
   useCursor,
   useTexture,
 } from '@react-three/drei';
+
 import {useScrollContext} from '~/components';
 
-export function CollectionProducts(props) {
+import {RoundedRectGeometry} from './RoundedRectGeometry';
+
+const CollectionProducts = memo(function CollectionProducts({params, width}) {
   const collectionItemsData = useRouteLoaderData(
     'routes/($locale).collections.$collectionHandle',
   );
-  const collectionsContent = collectionItemsData?.collection?.products?.nodes;
 
-  const productsTextures = useTexture(
-    collectionsContent
-      ? collectionsContent.map(
-          (collection) => collection.variants.nodes[0].image.url,
-        )
-      : [],
+  const collectionsContent = useMemo(
+    () => collectionItemsData?.collection?.products?.nodes,
+    [collectionItemsData],
   );
+  const productTexturesUrls = collectionsContent
+    ? collectionsContent.map(
+        (collection) => collection?.variants?.nodes?.[0]?.image?.url,
+      )
+    : [];
+
+  const productsTextures = useTexture(productTexturesUrls);
 
   const groupRef = useRef();
   const scroll = useScrollContext();
@@ -65,8 +71,8 @@ export function CollectionProducts(props) {
   const navigate = useNavigate();
   function handleProductsNavigate(handle) {
     navigate(
-      props.locale.locale
-        ? `${props.locale.locale}/products/${handle}`
+      params.locale
+        ? `${params.locale}/products/${handle}`
         : `/products/${handle}`,
     );
   }
@@ -123,20 +129,23 @@ export function CollectionProducts(props) {
                 currency={product.variants.nodes[0].price.currencyCode}
                 handle={product.handle}
                 navigate={handleProductsNavigate}
-                width={props.width}
+                width={width}
               />
             );
           })}
       </group>
     </>
   );
-}
+});
 
-function Product(props) {
-  const groupRef = useRef();
+const Product = memo(function Product(props) {
+  const groupRef = useRef(null);
   const [hovered, setHovered] = useState(false);
+
   useEffect(() => {
-    groupRef.current.scale.setScalar(hovered ? 1 + 0.02 : 1);
+    if (groupRef.current) {
+      groupRef.current.scale.setScalar(hovered ? 1 + 0.02 : 1);
+    }
   }, [hovered]);
   useCursor(hovered);
 
@@ -148,7 +157,7 @@ function Product(props) {
         onPointerOver={(e) => (e.stopPropagation(), setHovered(true))}
         onPointerOut={(e) => setHovered(false)}
       >
-        <roundedRectGeometry args={[10, 10, 0.4]} />
+        <RoundedRectGeometry args={[9, 11, 0.4]} />
 
         {props.width > 768 ? (
           <meshStandardMaterial
@@ -165,9 +174,9 @@ function Product(props) {
           />
         )}
       </mesh>
-      <group position={[0, 0.2, 0]}>
+      <group position={[0, 0, 0]}>
         <Text
-          position={[0, 1.1, 0]}
+          position={[0, 1, 0]}
           scale={0.8}
           textAlign="center"
           color={hovered ? 'white' : '#f2f2f2'}
@@ -175,12 +184,12 @@ function Product(props) {
           {props.title}
         </Text>
         <Text
-          position={[0, -0.2, 0]}
+          position={[0, -0.1, 0]}
           scale={0.7}
           textAlign="center"
           color={hovered ? 'white' : '#f2f2f2'}
         >
-          {props.amount} {props.currency}
+          {props?.amount} {props?.currency}
         </Text>
         {props.width > 768 ? (
           <Html
@@ -196,11 +205,13 @@ function Product(props) {
           </Html>
         ) : (
           <mesh position={[0, 0.5, -0.5]}>
-            <roundedRectGeometry args={[9, 2.5, 0.4]} />
+            <RoundedRectGeometry args={[9, 2.5, 0.4]} />
             <meshBasicMaterial color={'#017382'} />
           </mesh>
         )}
       </group>
     </group>
   );
-}
+});
+
+export default CollectionProducts;

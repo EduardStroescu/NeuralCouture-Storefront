@@ -28,7 +28,7 @@ export function IconMenu(props) {
 
 export function IconClose(props) {
   return (
-    <Icon {...props} stroke={props.stroke || 'black'}>
+    <Icon {...props} stroke={props.stroke || 'white'}>
       <title>Close</title>
       <line
         x1="4.44194"
@@ -217,7 +217,7 @@ export function IconXMark({stroke = 'currentColor', ...props}) {
 
 export function IconRemove(props) {
   return (
-    <Icon {...props} fill="transparent" stroke={props.stroke || 'black'}>
+    <Icon {...props} fill="transparent" stroke={props.stroke || 'white'}>
       <title>Remove</title>
       <path
         d="M4 6H16"
@@ -261,7 +261,7 @@ export function IconArrowLeft({width}) {
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={`${width} pointer-events-auto cursor-pointer opacity-60 group-hover:opacity-100`}
+      className={`${width} opacity-60 group-hover:opacity-100`}
     >
       <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
       <g
@@ -289,7 +289,7 @@ export function IconArrowRight({width}) {
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={`${width} pointer-events-auto cursor-pointer opacity-60 group-hover:opacity-100`}
+      className={`${width} opacity-60 group-hover:opacity-100`}
     >
       <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
       <g
