@@ -18,8 +18,8 @@
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
     "@headlessui/react": "^1.7.2",
-    "@react-three/drei": "^9.80.6",
-    "@react-three/fiber": "^8.13.7",
+    "@react-three/drei": "^9.108.3",
+    "@react-three/fiber": "^8.16.8",
     "@remix-run/react": "1.19.1",
     "@shopify/cli": "3.48.0",
     "@shopify/cli-hydrogen": "^5.1.2",

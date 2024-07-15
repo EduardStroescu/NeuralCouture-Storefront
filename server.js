@@ -27,11 +27,17 @@ module.exports = async function (request) {
       PUBLIC_STOREFRONT_API_TOKEN: '',
       PRIVATE_STOREFRONT_API_TOKEN: '',
       PUBLIC_STORE_DOMAIN: '',
+      PUBLIC_EMAILJS_SERVICE_ID: '',
+      PUBLIC_EMAILJS_TEMPLATE_ID: '',
+      PUBLIC_EMAILJS_PUBLIC_KEY: '',
     };
     env.SESSION_SECRET = process.env.SESSION_SECRET;
     env.PUBLIC_STOREFRONT_API_TOKEN = process.env.PUBLIC_STOREFRONT_API_TOKEN;
     env.PRIVATE_STOREFRONT_API_TOKEN = process.env.PRIVATE_STOREFRONT_API_TOKEN;
     env.PUBLIC_STORE_DOMAIN = process.env.PUBLIC_STORE_DOMAIN;
+    env.PUBLIC_EMAILJS_SERVICE_ID = process.env.PUBLIC_EMAILJS_SERVICE_ID;
+    env.PUBLIC_EMAILJS_TEMPLATE_ID = process.env.PUBLIC_EMAILJS_TEMPLATE_ID;
+    env.PUBLIC_EMAILJS_PUBLIC_KEY = process.env.PUBLIC_EMAILJS_PUBLIC_KEY;
 
     /**
      * Open a cache instance in the worker and a custom session instance.

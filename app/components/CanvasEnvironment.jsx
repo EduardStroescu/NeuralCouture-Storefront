@@ -1,6 +1,7 @@
 import {Environment, Lightformer} from '@react-three/drei';
+import {useThree} from '@react-three/fiber';
 
-export function CanvasEnvironment({width}) {
+export function CanvasEnvironment() {
   return (
     <>
       <Environment
@@ -11,30 +12,7 @@ export function CanvasEnvironment({width}) {
         files={'/environment/evening_road_01_puresky_1k.hdr'}
         background={false}
         blur={1}
-      >
-        {width > 768 && (
-          <group>
-            <Lightformer
-              intensity={7}
-              position={[4, 2, 10]}
-              scale={[5, 5, 1]}
-              target={[0, 1, 10]}
-            />
-            <Lightformer
-              intensity={6}
-              position={[0, 2, 10]}
-              scale={[5, 5, 1]}
-              target={[0, 2, 10]}
-            />
-            <Lightformer
-              intensity={6}
-              position={[-4, 2, 10]}
-              scale={[5, 5, 1]}
-              target={[0, 1, 10]}
-            />
-          </group>
-        )}
-      </Environment>
+      />
     </>
   );
 }

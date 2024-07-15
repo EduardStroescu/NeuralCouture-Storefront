@@ -260,6 +260,22 @@ function blog({blog, url}) {
   };
 }
 
+function contact({contact, url}) {
+  return {
+    title: contact?.seo?.title,
+    description: truncate(contact?.seo?.description || ''),
+    titleTemplate: '%s | Contact',
+    url,
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@type': 'ContactPage',
+      name: contact.title,
+      description: contact.seo.description,
+      url,
+    },
+  };
+}
+
 function page({page, url}) {
   return {
     description: truncate(page?.seo?.description || ''),
@@ -321,6 +337,7 @@ export const seoPayload = {
   home,
   listCollections,
   page,
+  contact,
   policies,
   policy,
   product,

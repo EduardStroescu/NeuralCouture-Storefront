@@ -69,6 +69,7 @@ function resolveToFromType(
     PRODUCT: 'products',
     SEARCH: 'search',
     SHOP_POLICY: 'policies',
+    CONTACT: 'contact',
   };
 
   const pathParts = pathname.split('/');
@@ -98,6 +99,9 @@ function resolveToFromType(
 
     case type === 'CATALOG':
       return `/${routePrefix.CATALOG}`;
+
+    case type === 'CONTACT':
+      return `/contact`;
 
     // common cases: BLOG, PAGE, COLLECTION, PRODUCT, SHOP_POLICY, HTTP
     default:
