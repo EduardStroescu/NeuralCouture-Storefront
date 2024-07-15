@@ -1,27 +1,20 @@
-import {memo, useEffect, useMemo, useRef, useState} from 'react';
-import {Text, useCursor, useTexture} from '@react-three/drei';
+import {memo, useMemo, useRef, useState} from 'react';
+import {useCursor} from '@react-three/drei';
 import {useNavigate, useRouteLoaderData} from '@remix-run/react';
-import {RoundedRectGeometry} from './RoundedRectGeometry';
+import {AnimatedImage} from './AnimatedImage';
+import {useFrame} from '@react-three/fiber';
+import {easing} from 'maath';
+import {TitleCard} from './TitleCard';
 
-export const Collections = memo(function Collections({width, params}) {
+export const Collections = memo(function Collections({params}) {
   const indexData = useRouteLoaderData('root');
   const collections = useMemo(
     () => indexData?.nodes?.collections?.nodes,
     [indexData],
   );
-  const collectionsImageUrls =
-    collections?.map((collection) => collection?.image?.url || '') || [];
-
-  const collectionsTextures = useTexture(collectionsImageUrls);
-
-  const navigate = useNavigate();
-  function handleMeshClick(handle) {
-    navigate(
-      params.locale
-        ? `${params.locale}/collections/${handle}`
-        : `/collections/${handle}`,
-    );
-  }
+  const collectionTextureUrls = collections?.map(
+    (collection) => collection?.image?.url || '/placeholders/placeholder.svg',
+  );
 
   return (
     <>
@@ -31,11 +24,10 @@ export const Collections = memo(function Collections({width, params}) {
             <Collection
               key={collection.id}
               index={index}
-              textures={collectionsTextures[index]}
+              texture={collectionTextureUrls[index]}
               collectionTitle={collection.title}
               handle={collection.handle}
-              navigate={handleMeshClick}
-              width={width}
+              locale={params.locale}
             />
           );
         })}
@@ -43,54 +35,48 @@ export const Collections = memo(function Collections({width, params}) {
   );
 });
 
-const Collection = memo(function Collection(props) {
+const Collection = memo(function Collection({
+  texture,
+  collectionTitle,
+  index,
+  handle,
+  locale,
+}) {
   const groupRef = useRef(null);
   const [hovered, setHovered] = useState(false);
-  useEffect(() => {
+  useFrame((_, delta) => {
     if (groupRef.current) {
-      groupRef.current?.scale.setScalar(hovered ? 1 + 0.02 : 1);
+      easing.damp3(groupRef.current.scale, hovered ? 1.02 : 1, 0.1, delta);
     }
-  }, [hovered]);
+  });
   useCursor(hovered);
 
+  const navigate = useNavigate();
+  const handleNavigate = (e, handle) => {
+    navigate(
+      locale ? `${locale}/collections/${handle}` : `/collections/${handle}`,
+    );
+  };
+
   return (
-    <group ref={groupRef} rotateX={Math.PI / 2}>
-      <mesh
-        position={[props.index * 13 + 4.6, 7, 10]}
-        onClick={() => props.navigate(props.handle)}
-        onPointerOver={() => setHovered(true)}
-        onPointerOut={() => setHovered(false)}
-      >
-        <RoundedRectGeometry args={[10, 10, 0.4]} />
-        {props.width > 768 ? (
-          <meshStandardMaterial
-            map={props.textures}
-            color={hovered ? '#8c8c8c' : 'grey'}
-            roughness={0.2}
-            metalness={1}
-            envMapIntensity={1.2}
-          />
-        ) : (
-          <meshBasicMaterial
-            map={props.textures}
-            color={hovered ? 'white' : '#e8e8e8'}
-          />
-        )}
-      </mesh>
-      <group position={[0, -0.2, 0]}>
-        <Text position={[props.index * 13 + 4.6, 0.5, 10]} textAlign="center">
-          {props.collectionTitle}
-        </Text>
-        <mesh position={[props.index * 13.2 + 4.6, 0.5, 9.5]}>
-          <RoundedRectGeometry args={[9, 2, 0.4]} />
-          <meshStandardMaterial
-            color={'#017382'}
-            transparent
-            opacity={0.9}
-            roughness={0}
-          />
-        </mesh>
-      </group>
+    <group
+      ref={groupRef}
+      onPointerOver={() => setHovered(true)}
+      onPointerOut={() => setHovered(false)}
+      onClick={(e) => handleNavigate(e, handle)}
+    >
+      <AnimatedImage
+        url={texture}
+        hovered={hovered}
+        position={[index * 13 + 4.6, 7, 10]}
+        size={[10, 10, 20, 20]}
+      />
+      <TitleCard
+        title={collectionTitle}
+        index={index}
+        position={[index * 13 + 4.6, 0.7, 10]}
+        hovered={hovered}
+      />
     </group>
   );
 });
